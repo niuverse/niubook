@@ -1,0 +1,93 @@
+# Niubook — 权利与许可声明
+
+版权 © 2026 Embodied RSI Research Group / Niubook contributors。
+
+## 一、内容许可
+
+除另有说明外，本仓库中书籍的文字、图表、封面、版式、章节选择与编排、
+注释与文献整理，采用 **CC BY-NC-SA 4.0**
+（Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International）
+许可。许可证全文见 [`LICENSE`](LICENSE)，官方文本：
+<https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode>。
+
+`SPDX-License-Identifier: CC-BY-NC-SA-4.0`
+
+你可以署名、非商业性地复制、传播与改编，但改编作品须以相同许可共享，
+且不得附加额外法律限制。商业使用（包括销售纸书/电子书、付费课程与商业培训、
+付费数据库或订阅服务）不在本许可范围内，须事先取得书面授权。
+
+## 二、代码许可
+
+`scripts/`、`toolchain/` 下的构建脚本、Typst 模板与主题代码采用 **MIT** 许可，
+见 [`LICENSE-CODE`](LICENSE-CODE)。`toolchain/vendor/` 中的第三方 Typst 包
+保留其原始许可（CeTZ 为 LGPL-3.0-or-later，见各包内 `LICENSE`）。
+
+## 三、AI 生成说明
+
+本书初稿由 Moonshot AI 的 **Kimi K3** 生成；人类作者完成了选题、大纲设计、
+多轮编辑、引用核验与统稿。依《Kimi 用户服务协议》第 5.2 条，用户在法律允许的
+范围内拥有输入与输出内容的知识产权；但依中国、美国、欧盟现行规则，完全由 AI
+生成、缺乏人类实质性智力投入的部分可能不受著作权保护。
+
+对该等部分，作者不主张排他性著作权；如依任何法域认定其中存在可受保护的权利，
+作者同意在 CC BY-NC-SA 4.0 项下授权。对人类作者的选题、结构编排、编辑修改、
+注释与文献整理等贡献，以及本书作为汇编/演绎作品的整体，作者在法律允许的范围内
+保留权利，并保留另行授予商业许可的权利。
+
+本仓库与发布站点在显著位置标注「AI 生成 / 人工统稿」。依《人工智能生成合成内容
+标识办法》（2025-09-01 施行）及适用法律，转载、改编或再分发时不得删除、篡改或
+隐匿该标识。作者不对任何 AI 输出的独创性、准确性、完整性或不侵权作出保证。
+
+## 四、第三方材料
+
+书中引用的他人文字、图表、数据、代码与文献，权利仍归原权利人所有，不属于上述
+许可的授权范围。引用依适用法律的引用/合理使用规定或已取得许可。参考文献列表
+仅为引用信息，不构成对原作品的再许可。转载或改编时须自行核实并清除第三方权利。
+
+## 五、商业授权与联系
+
+商业授权、出版合作与侵权事宜，请通过
+<https://github.com/niuverse/niubook/issues> 联系。
+
+## 六、免责
+
+本作品按「现状」提供，不附带任何明示或默示担保，包括但不限于权利完整性、
+准确性或不侵权担保。CC BY-NC-SA 4.0 第 5 条的免责与责任限制条款适用。
+本声明不构成法律意见；正式商业出版前请咨询执业律师。
+
+---
+
+# Niubook — Copyright and License Notice
+
+Copyright © 2026 Embodied RSI Research Group / Niubook contributors.
+
+**Content.** Unless otherwise noted, book text, figures, covers, layout, chapter
+selection and arrangement, annotations and bibliography compilation are licensed
+under **CC BY-NC-SA 4.0**. Full text: [`LICENSE`](LICENSE).
+`SPDX-License-Identifier: CC-BY-NC-SA-4.0`.
+Commercial use, including resale, paid courses, or subscription services, requires
+prior written permission.
+
+**Code.** Build scripts, Typst templates and theme code under `scripts/` and
+`toolchain/` are licensed under **MIT** ([`LICENSE-CODE`](LICENSE-CODE)).
+Third-party Typst packages in `toolchain/vendor/` keep their original licenses.
+
+**AI-generated content.** Drafts were generated with Moonshot AI's **Kimi K3**;
+human authors carried out topic selection, outline design, multi-round editing,
+citation verification, and consolidation. Purely AI-generated material may not be
+protected by copyright in China, the United States, or the European Union. The
+authors make no exclusive claim to such material and license any recognizable
+rights therein under CC BY-NC-SA 4.0. Rights in human contributions and in the
+compilation as a whole are reserved to the extent permitted by law. The
+"AI-generated / human-edited" label must not be removed or concealed in
+redistribution.
+
+**Third-party material.** Quotations, figures, data, code and references remain
+the property of their respective rights holders and are not covered by the
+licenses above.
+
+**Commercial licensing.** Contact via
+<https://github.com/niuverse/niubook/issues>.
+
+**Disclaimer.** Provided "as is", without warranties of any kind. This notice is
+not legal advice.

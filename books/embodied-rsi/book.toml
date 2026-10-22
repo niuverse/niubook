@@ -1,0 +1,50 @@
+schema = 1
+
+[book]
+slug = "embodied-rsi"
+order = 1
+title = "具身递归自我改进"
+subtitle = "理论、系统与实践"
+title_en = "Embodied Recursive Self-Improvement: Theory, Systems, and Practice"
+author = "Embodied RSI Research Group"
+series = "Niubook"
+short_title = "具身递归自我改进"
+language = "zh-CN"
+year = 2026
+edition = "2026.10"
+version = "1.0.0"
+status = "stable"
+audience = "面向机器人与人工智能方向的研究生与研究人员"
+knowledge_cutoff = "2026-10"
+tags = ["具身智能", "递归自我改进", "机器人学习", "LLM Agent", "评估协议"]
+abstract = """
+本书把「具身递归自我改进」作为独立研究纲领来处理：从 Agent = 模型 + Harness 的分层出发，用扩展五元组统一形式化改进闭环，系统梳理 2025–2026 年的 Harness 工程、自我修改机制、评估协议与物理域证据，并给出可运行的参考实现与验证清单。全书坚持一条判据：瓶颈不在系统能否自我改进，而在我们能否可信地断言它改进了。"""
+cover_note = "学术讲义 · 2026"
+
+[build]
+engine = "typst"
+typst = "0.13.1"
+main = "main.typ"
+
+[stats]
+pages = 106
+chapters = 17
+sections = 104
+references = 327
+unverified = 24
+
+[quality]
+max_unverified = 24
+
+[license]
+spdx = "CC-BY-NC-SA-4.0"
+name = "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
+url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+code = "MIT"
+
+[provenance]
+origin = "zip:具身递归自我改进-typst源码.zip"
+origin_sha256 = "b9475a270f972e7e85a1af02c8427d4c5e70e1c14a01af136612084bef01cbb2"
+imported_at = "2026-10-22"
+generator = "Kimi K3"
+pipeline = "R1–R7 研究简报 → 17 章并行写作 → BibTeX 合并去重 → 人工统稿与引用核验"

@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "series": "Niubook",
+  "books": [
+    {
+      "slug": "embodied-rsi",
+      "order": 1,
+      "title": "具身递归自我改进",
+      "subtitle": "理论、系统与实践",
+      "title_en": "Embodied Recursive Self-Improvement: Theory, Systems, and Practice",
+      "author": "Embodied RSI Research Group",
+      "series": "Niubook",
+      "language": "zh-CN",
+      "year": 2026,
+      "edition": "2026.10",
+      "version": "1.0.0",
+      "status": "stable",
+      "knowledge_cutoff": "2026-10",
+      "tags": [
+        "具身智能",
+        "递归自我改进",
+        "机器人学习",
+        "LLM Agent",
+        "评估协议"
+      ],
+      "abstract": "本书把「具身递归自我改进」作为独立研究纲领来处理：从 Agent = 模型 + Harness 的分层出发，用扩展五元组统一形式化改进闭环，系统梳理 2025–2026 年的 Harness 工程、自我修改机制、评估协议与物理域证据，并给出可运行的参考实现与验证清单。全书坚持一条判据：瓶颈不在系统能否自我改进，而在我们能否可信地断言它改进了。",
+      "license": {
+        "spdx": "CC-BY-NC-SA-4.0",
+        "name": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
+        "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "stats": {
+        "pages": 106,
+        "chapters": 17,
+        "sections": 104,
+        "references": 327,
+        "unverified": 24
+      },
+      "chapters": [
+        {
+          "number": 1,
+          "title": "引言：从「Who Improves the Robot?」到 Embodied RSI 研究纲领",
+          "file": "ch01.typ"
+        },
+        {
+          "number": 2,
+          "title": "决策与学习的数学基础：MDP/POMDP、强化学习与最优控制",
+          "file": "ch02.typ"
+        },
+        {
+          "number": 3,
+          "title": "元学习、自动化科学发现与实验设计",
+          "file": "ch03.typ"
+        },
+        {
+          "number": 4,
+          "title": "递归自我改进的形式化理论：从 Gödel 机到自我演化智能体",
+          "file": "ch04.typ"
+        },
+        {
+          "number": 5,
+          "title": "Agent 与 Harness：概念分离、系统解剖与平台化转身",
+          "file": "ch05.typ"
+        },
+        {
+          "number": 6,
+          "title": "规划、记忆、技能与工具：Harness 内部组件",
+          "file": "ch06.typ"
+        },
+        {
+          "number": 7,
+          "title": "世界模型、任务生成与实验编排",
+          "file": "ch07.typ"
+        },
+        {
+          "number": 8,
+          "title": "自我修改机制：改什么、何时改、如何提交",
+          "file": "ch08.typ"
+        },
+        {
+          "number": 9,
+          "title": "评估、反馈与改进验证协议",
+          "file": "ch09.typ"
+        },
+        {
+          "number": 10,
+          "title": "Embodied RSI 闭环统一框架",
+          "file": "ch10.typ"
+        },
+        {
+          "number": 11,
+          "title": "仿真基础设施与大规模并行实验",
+          "file": "ch11.typ"
+        },
+        {
+          "number": 12,
+          "title": "机器人学习：模仿学习、强化学习与 VLA",
+          "file": "ch12.typ"
+        },
+        {
+          "number": 13,
+          "title": "LLM 驱动的机器人实验自动化：从奖励设计到闭环系统",
+          "file": "ch13.typ"
+        },
+        {
+          "number": 14,
+          "title": "开放式进化、AutoRL 与计算成本",
+          "file": "ch14.typ"
+        },
+        {
+          "number": 15,
+          "title": "工程实践：可扩展 Embodied RSI 参考框架与端到端示例",
+          "file": "ch15.typ"
+        },
+        {
+          "number": 16,
+          "title": "安全、风险与治理",
+          "file": "ch16.typ"
+        },
+        {
+          "number": 17,
+          "title": "开放问题与研究路线图",
+          "file": "ch17.typ"
+        }
+      ],
+      "appendix": [
+        {
+          "number": "A",
+          "title": "符号表",
+          "file": "appendix.typ"
+        },
+        {
+          "number": "B",
+          "title": "改进验证协议清单",
+          "file": "appendix.typ"
+        },
+        {
+          "number": "C",
+          "title": "2026 下半年前沿大事记",
+          "file": "appendix.typ"
+        }
+      ],
+      "paths": {
+        "source": "books/embodied-rsi",
+        "pdf": "books/embodied-rsi/embodied-rsi.pdf"
+      },
+      "provenance": {
+        "generator": "Kimi K3",
+        "imported_at": "2026-10-22"
+      }
+    }
+  ]
+}
