@@ -103,7 +103,13 @@ def main() -> int:
             print(f"missing {pdf.relative_to(ROOT)}; run `just build {slug}` first", file=sys.stderr)
             return 1
         shutil.copy2(pdf, out / f"{slug}.pdf")
-        make_cover(pdf, out / f"{slug}.jpg")
+        cover = out / f"{slug}.jpg"
+        if not make_cover(pdf, cover):
+            fallback = ROOT / "site" / "covers" / f"{slug}.jpg"
+            if fallback.exists():
+                shutil.copy2(fallback, cover)
+            else:
+                print(f"warning: no cover for {slug}", file=sys.stderr)
         print(f"  html · /books/{slug}.html ({money(pdf.stat().st_size)})")
 
     for page in DIST.rglob("*.html"):

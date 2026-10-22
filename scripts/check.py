@@ -174,6 +174,10 @@ def gate_build(book_dir: Path, data: dict, *, build: bool = True) -> str:
             match = re.search(r"^Pages:\s+(\d+)", info.stdout, re.MULTILINE)
             if match:
                 pages = int(match.group(1))
+        if pages is None:
+            match = re.search(rb"/Count\s+(\d+)", pdf.read_bytes())
+            if match:
+                pages = int(match.group(1))
 
     declared = data.get("stats", {}).get("pages")
     if pages is not None and declared and pages != declared:
