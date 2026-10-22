@@ -39,7 +39,7 @@ REQUIRED_BOOK_FIELDS = (
 )
 ALLOWED_STATUS = {"draft", "review", "stable", "archived"}
 PLACEHOLDER_RE = re.compile(r"\b(?:TODO|FIXME|TBD)\b|XXX|待补|待编写|待填")
-BOX_GLYPH_RE = re.compile("[\u25A0\u25A1\u25A2\u25A3\u25FB\u2610\u2611\u2612\uFFFD]")
+BOX_GLYPH_RE = re.compile("[\u25A0\u25A1\u25A2\u25A3\u25FB\u25FC\u2610\u2611\u2612\uFFFD]")
 LABEL_RE = re.compile(r"<([A-Za-z][\w-]*):([\w.-]+)>")
 CITE_RE = re.compile(r"@([A-Za-z][A-Za-z0-9:_-]*)")
 RAW_FENCE_RE = re.compile(r"```.*?```", re.DOTALL)

@@ -27,7 +27,7 @@
 | 文献 | 327 条 BibTeX，1,007 处引用，其中 **24 条 `UNVERIFIED`** |
 | 工具链 | Typst 0.13.1 + `@preview/cetz:0.3.4` + `oxifmt:0.2.1`；全量编译 4.6 s |
 | 字体 | 拉丁/数学：New Computer Modern（Typst 内置）；中文：Noto Serif/Sans CJK SC（系统） |
-| 导入时基线指纹 | `pdftotext -layout` 后 sha256 = `27185eec3d8f53e966f484a726277ce5ca3605ed90e7950b0e424fa560a3ba90`（v1.0.1 字形修复后为 `735a39c8…`） |
+| 导入时基线指纹 | `pdftotext -layout` 后 sha256 = `27185eec3d8f53e966f484a726277ce5ca3605ed90e7950b0e424fa560a3ba90`（v1.0.1 字形修复后为 `ca84e453…`） |
 
 结构干净：无重复 label、无 TODO/占位符、0 编译警告。问题集中在三处：
 
@@ -285,7 +285,7 @@ reports/           citations.md, consistency.md, gates.json
 已完成：
 
 - `books/embodied-rsi/` 原样导入，106 页 / 导入时文本指纹
-  `27185eec…` 与导入前完全一致；v1.0.1 字形修复后为 `735a39c8…`，页数不变；
+  `27185eec…` 与导入前完全一致；v1.0.1 字形修复后为 `ca84e453…`，页数不变；
 - 版式抽到 `toolchain/typst/{tokens,components,base}.typ`，`template.typ` 缩到 5 行；
 - `book.toml → _meta.typ` 生成与同步门禁；G0–G6 门禁全部可执行；
 - `catalog/books.json`、静态站点与 `dist/site` 构建；

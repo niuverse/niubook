@@ -168,9 +168,9 @@ $ "PRSI" := (cal(H), Theta, Phi, E), $ <eq:prsi>
     content((0, -0.15), text(size: 7.5pt)[九环节闭环])
     content((0, -0.6), text(size: 7.5pt)[（本书提出）])
     // 分组注记
-    content((5.95, 4.35), text(size: 7.5pt, fill: accent)[◼ 做什么：提议与试验])
-    content((-6.2, -0.2), text(size: 7.5pt, fill: accent2)[◼ 学到什么：诊断与归因])
-    content((5.95, -4.55), text(size: 7.5pt, fill: gray.darken(25%))[◼ 留下什么：修改与固化])
+    content((5.95, 4.35), text(size: 7.5pt, fill: accent)[• 做什么：提议与试验])
+    content((-6.2, -0.2), text(size: 7.5pt, fill: accent2)[• 学到什么：诊断与归因])
+    content((5.95, -4.55), text(size: 7.5pt, fill: gray.darken(25%))[• 留下什么：修改与固化])
   }),
   caption: [Embodied RSI 九环节闭环总览（本书提出）。⑨ 回流①，构成递归的外层循环；三个语义分组对应「做什么 / 学到什么 / 留下什么」。],
 ) <fig:loop9>

@@ -20,7 +20,7 @@
 ```text
 Typst 0.13.1 + cetz 0.3.4（vendored）
 106 页 A4 · 0 警告 · 0 未解析引用 · 编译约 4 秒
-pdftotext -layout | sha256 = 735a39c8ef7daade38882d32e920fc795e4f250f43a6ce77a4fca24c066ce5f8
+pdftotext -layout | sha256 = ca84e4531f6accbf155da80edd46fba61ca43d96df9ebb22b97a9ccf58f76e10
 ```
 
 该指纹用于回归：正文或版式若发生非预期变化，`just check` 之外还应比对这一指纹。
@@ -85,7 +85,7 @@ pdftotext -layout | sha256 = 735a39c8ef7daade38882d32e920fc795e4f250f43a6ce77a4f
 | 文献真实性 | **24 条标注 UNVERIFIED**，清单见 `REVIEW.md` |
 | 同行评审 | 无 |
 | 第三方材料清权 | 未逐项核验 |
-| 字形 | PDF 中 U+25A1 空心方块为 0；1393 个非 ASCII 字符逐一核对字体覆盖，仅 U+1D4AB 不在系统字体，实测由 NewCM Math 渲染 |
+| 字形 | 106 页 PDF 逐字扫描：**0 个 .notdef 字形**；U+25A1/U+25FC 均为 0；1393 个非 ASCII 字符逐一核对字体覆盖，仅 U+1D4AB 不在系统字体，实测由 NewCM Math 渲染 |
 | AI 标识 | 仓库 `NOTICE`、README 与发布站点已标注；PDF 内页版权页待下一版补充 |
 
 ## 5. 变更记录
@@ -94,4 +94,4 @@ pdftotext -layout | sha256 = 735a39c8ef7daade38882d32e920fc795e4f250f43a6ce77a4f
 | --- | --- |
 | 2026-10-22 | 从原始 zip 导入；抽取系列模板；建立 106 页/文本指纹基线；登记 24 条待核文献 |
 | 2026-10-22 | 发布 v1.0.0（内容冻结，引用待核状态如实公开） |
-| 2026-10-22 | v1.0.1：修复 52 处清单空心方块；证明结束符统一为实心方块；文本指纹更新为 `735a39c8…` |
+| 2026-10-22 | v1.0.1：修复 52 处清单空心方块与 3 处 notdef 方块项目符号；证明结束符统一为实心方块；文本指纹更新为 `ca84e453…` |
