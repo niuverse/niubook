@@ -39,6 +39,20 @@ def money(size: int) -> str:
     return f"{size / 1_000_000:.1f} MB"
 
 
+def make_cover(pdf: Path, target: Path) -> bool:
+    if not shutil.which("pdftoppm"):
+        print("warning: pdftoppm not found; skipping cover generation", file=sys.stderr)
+        return False
+    subprocess.run(
+        [
+            "pdftoppm", "-f", "1", "-l", "1", "-r", "150", "-jpeg",
+            "-jpegopt", "quality=90", "-singlefile", str(pdf), str(target.with_suffix("")),
+        ],
+        check=True,
+    )
+    return target.exists()
+
+
 def write_summary(catalog: dict) -> str:
     lines = ["# Summary", "", "[书库](index.md)", ""]
     for book in catalog["books"]:
@@ -66,9 +80,15 @@ def render_index(catalog: dict) -> str:
 """
 
 
-def render_book(book: dict, pdf_bytes: int) -> str:
+def render_book(book: dict, pdf_bytes: int, has_cover: bool) -> str:
     slug = book["slug"]
     stats = book["stats"]
+    cover = (
+        f'<p style="text-align:center"><img src="{slug}.jpg" '
+        f'alt="《{book["title"]}》封面" width="260" style="border:1px solid #cfcfcf"></p>\n\n'
+        if has_cover
+        else ""
+    )
     toc = "\n".join(
         f"{chapter['number']}. {chapter['title']}" for chapter in book["chapters"]
     )
@@ -86,7 +106,7 @@ def render_book(book: dict, pdf_bytes: int) -> str:
 
 作者：{book['author']} ｜ 版次：{book['edition']} ｜ {stats['pages']} 页 ｜ {stats['references']} 文献 ｜ {book['license']['spdx']}
 
-## 摘要
+{cover}## 摘要
 
 {book['abstract']}
 
@@ -132,8 +152,9 @@ def main() -> int:
         out = SRC / "src" / "books"
         out.mkdir(parents=True, exist_ok=True)
         shutil.copy2(pdf, out / f"{slug}.pdf")
+        cover = make_cover(pdf, out / f"{slug}.jpg")
         (out / f"{slug}.md").write_text(
-            render_book(book, pdf.stat().st_size), encoding="utf-8"
+            render_book(book, pdf.stat().st_size, cover), encoding="utf-8"
         )
         print(f"  mdbook · /books/{slug}.html ({money(pdf.stat().st_size)})")
 
