@@ -32,7 +32,9 @@ jobs:
           for f in \
             "Serif/OTF/SimplifiedChinese/NotoSerifCJKsc-Regular.otf" \
             "Serif/OTF/SimplifiedChinese/NotoSerifCJKsc-Bold.otf" \
-            "Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Bold.otf"; do
+            "Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Bold.otf" \
+            "Sans/Mono/NotoSansMonoCJKsc-Regular.otf" \
+            "Sans/Mono/NotoSansMonoCJKsc-Bold.otf"; do
             sudo curl -L --fail --retry 3 --silent --show-error \
               -o "/usr/share/fonts/truetype/noto-cjk/$(basename "$f")" "$base/$f"
           done
