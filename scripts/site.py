@@ -112,7 +112,7 @@ def render_book(book: dict, pdf_bytes: int, has_cover: bool) -> str:
 
 <p class="book-title-en">{html.escape(book['title_en'])}</p>
 
-[Typst 源码]({REPO_URL}/tree/main/books/{slug}) · [溯源]({REPO_URL}/blob/main/books/{slug}/PROVENANCE.md) · [审校]({REPO_URL}/blob/main/books/{slug}/REVIEW.md)
+[下载 PDF]({slug}.pdf) · [Typst 源码]({REPO_URL}/tree/main/books/{slug}) · [溯源]({REPO_URL}/blob/main/books/{slug}/PROVENANCE.md) · [审校]({REPO_URL}/blob/main/books/{slug}/REVIEW.md)
 
 <dl class="book-meta-list">
 <div><dt>作者</dt><dd>{html.escape(book['author'])}</dd></div>
