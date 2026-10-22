@@ -3,16 +3,16 @@
 
 = 决策与学习的数学基础：MDP/POMDP、强化学习与最优控制
 
-具身智能的递归自我改进（RSI）若要可分析、可保证，须先把"智能体—环境—学习—评估"链条数学化。本章是全书理论地基：交互形式化为（部分可观测）马尔可夫决策过程，学习形式化为 Bellman 不动点的随机逼近与策略参数的直接优化，执行形式化为最优控制，验证形式化为统计推断。统一符号：状态 $s in cal(S)$，动作 $a in cal(A)$，转移核 $P(s' mid s, a)$，奖励 $r(s,a,s')$，折扣 $gamma in [0,1]$，策略 $pi_theta (a mid s)$，目标为折扣回报
+具身智能的递归自我改进（RSI）若要可分析、可保证，须先把"智能体—环境—学习—评估"链条数学化。本章是全书理论地基：交互形式化为（部分可观测）马尔可夫决策过程，学习形式化为 Bellman 不动点的随机逼近与策略参数的直接优化，执行形式化为最优控制，验证形式化为统计推断。统一符号：状态 $s in cal(S)$，动作 $a in cal(A)$，转移核 $P(s' divides s, a)$，奖励 $r(s,a,s')$，折扣 $gamma in [0,1]$，策略 $pi_theta (a divides s)$，目标为折扣回报
 $ J(theta) = EE_(tau tilde pi_theta) [ sum_(t=0)^(infinity) gamma^t r_t ]. $ <eq:ch02-objective>
 本章定理属【已有成果】；将其装配成 RSI 闭环的映射属【本书推断】。
 
 == MDP 与 Bellman 压缩映射
 
 #definition(title: [马尔可夫决策过程 @puterman1994markov])[
-无限视界折扣 MDP 为五元组 $cal(M) = (cal(S), cal(A), P, r, gamma)$，Markov 性质要求未来只依赖当前状态与动作。给定策略 $pi(a mid s)$，定义回报 $G_t = sum_(k=0)^(infinity) gamma^k r_(t+k+1)$、值函数 $V^pi(s) = EE_pi [G_t mid s_t = s]$、动作值函数 $Q^pi(s,a)$ 与优势函数 $A^pi = Q^pi - V^pi$。对任意 $V: cal(S) -> RR$，Bellman 期望算子与最优算子为
-$ (cal(T)^pi V)(s) = sum_a pi(a mid s) sum_(s') P(s' mid s,a)[r + gamma V(s')], \
-  (cal(T) V)(s) = max_a sum_(s') P(s' mid s,a)[r + gamma V(s')]. $ <eq:ch02-bellman-opt>
+无限视界折扣 MDP 为五元组 $cal(M) = (cal(S), cal(A), P, r, gamma)$，Markov 性质要求未来只依赖当前状态与动作。给定策略 $pi(a divides s)$，定义回报 $G_t = sum_(k=0)^(infinity) gamma^k r_(t+k+1)$、值函数 $V^pi(s) = EE_pi [G_t divides s_t = s]$、动作值函数 $Q^pi(s,a)$ 与优势函数 $A^pi = Q^pi - V^pi$。对任意 $V: cal(S) -> RR$，Bellman 期望算子与最优算子为
+$ (cal(T)^pi V)(s) = sum_a pi(a divides s) sum_(s') P(s' divides s,a)[r + gamma V(s')], \
+  (cal(T) V)(s) = max_a sum_(s') P(s' divides s,a)[r + gamma V(s')]. $ <eq:ch02-bellman-opt>
 $V^pi$ 与 $V^* = sup_pi V^pi$ 分别是 $cal(T)^pi$ 与 $cal(T)$ 的不动点 @bellman1957dynamic @sutton2018reinforcement。对具身智能体，$s$ 可含关节构型与任务上下文，$a$ 可为电机力矩或技能调用。
 ]
 
@@ -22,7 +22,7 @@ $V^pi$ 与 $V^* = sup_pi V^pi$ 分别是 $cal(T)^pi$ 与 $cal(T)$ 的不动点 @
 
 #proof[
 （梗概）固定 $s$，不妨设 $(cal(T)U)(s) >= (cal(T)V)(s)$，令 $a^*$ 为 $cal(T)U$ 在该状态的最优动作，则"去掉内层 max 只可能使差更大"：
-$ 0 <= (cal(T)U)(s) - (cal(T)V)(s) <= gamma sum_(s') P(s' mid s, a^*) [U(s') - V(s')] <= gamma norm(U - V)_infinity. $
+$ 0 <= (cal(T)U)(s) - (cal(T)V)(s) <= gamma sum_(s') P(s' divides s, a^*) [U(s') - V(s')] <= gamma norm(U - V)_infinity. $
 对 $s$ 取上确界即得压缩性；完备度量空间上的压缩映射有唯一不动点，迭代误差满足 $norm(V_n - V^*)_infinity <= gamma^n norm(V_0 - V^*)_infinity$。
 ]
 
@@ -40,8 +40,8 @@ PI 每步昂贵但收敛步数少，VI 反之；改进型 PI 与 actor-critic �
 
 == POMDP：信念状态与 PWLC 结构
 
-真实具身系统几乎从不完全可观测。POMDP 引入观测核 $O(o mid s', a)$ @sondik1971optimal @kaelbling1998planning：智能体不观测 $s_t$，仅凭历史决策；信念状态 $b_t(s) = PP(s_t = s mid h_t)$ 是历史的充分统计量，由 Bayes 滤波递归更新（$eta$ 为归一化常数）：
-$ b'(s') = eta dot O(o mid s', a) sum_s P(s' mid s, a) b(s). $ <eq:ch02-belief>
+真实具身系统几乎从不完全可观测。POMDP 引入观测核 $O(o divides s', a)$ @sondik1971optimal @kaelbling1998planning：智能体不观测 $s_t$，仅凭历史决策；信念状态 $b_t(s) = PP(s_t = s divides h_t)$ 是历史的充分统计量，由 Bayes 滤波递归更新（$eta$ 为归一化常数）：
+$ b'(s') = eta dot O(o divides s', a) sum_s P(s' divides s, a) b(s). $ <eq:ch02-belief>
 与 MDP 版的关键差别是智能体内部多出"信念更新"模块，策略作用在信念而非状态上。
 
 #theorem(title: [Sondik 定理 @sondik1971optimal])[
@@ -76,19 +76,19 @@ $ Q(s_t, a_t) arrow.l Q(s_t, a_t) + alpha_t [ r_(t+1) + gamma max_(a') Q(s_(t+1)
 
 #theorem(title: [策略梯度定理 @sutton2000policy])[
 设 $J(theta) = EE_(s_0 tilde mu_0) [V^(pi_theta)(s_0)]$，则在常规可微性假设下
-$ nabla_theta J(theta) = sum_s d^(pi_theta)(s) sum_a Q^(pi_theta)(s,a) nabla_theta pi_theta (a mid s) = EE_(s tilde d^(pi_theta), a tilde pi_theta) [ nabla_theta log pi_theta (a mid s) Q^(pi_theta)(s,a) ], $ <eq:ch02-pg>
-其中 $d^(pi_theta)(s) prop sum_(t=0)^(infinity) gamma^t PP(s_t = s mid pi_theta)$ 为折扣占用测度。
+$ nabla_theta J(theta) = sum_s d^(pi_theta)(s) sum_a Q^(pi_theta)(s,a) nabla_theta pi_theta (a divides s) = EE_(s tilde d^(pi_theta), a tilde pi_theta) [ nabla_theta log pi_theta (a divides s) Q^(pi_theta)(s,a) ], $ <eq:ch02-pg>
+其中 $d^(pi_theta)(s) prop sum_(t=0)^(infinity) gamma^t PP(s_t = s divides pi_theta)$ 为折扣占用测度。
 ]
 
 #proof[
 （完整推导）对 $V^(pi_theta)$ 的 Bellman 方程两边求梯度：
-$ nabla_theta V^(pi_theta)(s) = sum_a [ nabla_theta pi_theta (a mid s) Q^(pi_theta)(s,a) + pi_theta (a mid s) nabla_theta Q^(pi_theta)(s,a) ]. $
-展开 $Q^(pi_theta)(s,a) = sum_(s') P(s' mid s,a)[r(s,a,s') + gamma V^(pi_theta)(s')]$，注意 $r$ 与 $P$ 不依赖 $theta$，故 $nabla_theta Q^(pi_theta)(s,a) = gamma sum_(s') P(s' mid s,a) nabla_theta V^(pi_theta)(s')$。记 $phi(s) = sum_a nabla_theta pi_theta (a mid s) Q^(pi_theta)(s,a)$，代回得递推
-$ nabla_theta V^(pi_theta)(s) = phi(s) + gamma sum_a pi_theta (a mid s) sum_(s') P(s' mid s,a) nabla_theta V^(pi_theta)(s'). $
-对右端反复展开，第 $t$ 层贡献 $gamma^t sum_(s') PP(s_t = s' mid s_0 = s, pi_theta) phi(s')$；求和并对 $s_0 tilde mu_0$ 取期望即得 $nabla_theta J(theta) = sum_s d^(pi_theta)(s) phi(s)$，最后用 $pi_theta nabla_theta log pi_theta = nabla_theta pi_theta$ 写成期望形式，即 @eq:ch02-pg。
+$ nabla_theta V^(pi_theta)(s) = sum_a [ nabla_theta pi_theta (a divides s) Q^(pi_theta)(s,a) + pi_theta (a divides s) nabla_theta Q^(pi_theta)(s,a) ]. $
+展开 $Q^(pi_theta)(s,a) = sum_(s') P(s' divides s,a)[r(s,a,s') + gamma V^(pi_theta)(s')]$，注意 $r$ 与 $P$ 不依赖 $theta$，故 $nabla_theta Q^(pi_theta)(s,a) = gamma sum_(s') P(s' divides s,a) nabla_theta V^(pi_theta)(s')$。记 $phi(s) = sum_a nabla_theta pi_theta (a divides s) Q^(pi_theta)(s,a)$，代回得递推
+$ nabla_theta V^(pi_theta)(s) = phi(s) + gamma sum_a pi_theta (a divides s) sum_(s') P(s' divides s,a) nabla_theta V^(pi_theta)(s'). $
+对右端反复展开，第 $t$ 层贡献 $gamma^t sum_(s') PP(s_t = s' divides s_0 = s, pi_theta) phi(s')$；求和并对 $s_0 tilde mu_0$ 取期望即得 $nabla_theta J(theta) = sum_s d^(pi_theta)(s) phi(s)$，最后用 $pi_theta nabla_theta log pi_theta = nabla_theta pi_theta$ 写成期望形式，即 @eq:ch02-pg。
 ]
 
-关键洞察：梯度表达式中_不出现_ $nabla_theta d^(pi_theta)$——访问分布变化的一阶影响被自洽吸收，故可用沿当前策略的轨迹构造无偏梯度（REINFORCE：$hat(g) = sum_t nabla_theta log pi_theta (a_t mid s_t) (G_t - b(s_t))$）。基线 $b(s)$ 不改期望只降方差（因 $sum_a b(s) nabla_theta pi_theta (a mid s) = 0$）；取 $b = V^(pi_theta)$ 即以优势函数为信号，导向 actor-critic @konda2000actor 与偏差—方差插值的 GAE @schulman2015gae。
+关键洞察：梯度表达式中_不出现_ $nabla_theta d^(pi_theta)$——访问分布变化的一阶影响被自洽吸收，故可用沿当前策略的轨迹构造无偏梯度（REINFORCE：$hat(g) = sum_t nabla_theta log pi_theta (a_t divides s_t) (G_t - b(s_t))$）。基线 $b(s)$ 不改期望只降方差（因 $sum_a b(s) nabla_theta pi_theta (a divides s) = 0$）；取 $b = V^(pi_theta)$ 即以优势函数为信号，导向 actor-critic @konda2000actor 与偏差—方差插值的 GAE @schulman2015gae。
 
 === 信赖域、离线 RL 与探索
 

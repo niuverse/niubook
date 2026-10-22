@@ -15,7 +15,7 @@
     [符号], [含义], [首次出现],
     [$cal(M)$], [马尔可夫决策过程 $cal(M) = (cal(S), cal(A), P, r, gamma, mu_0)$；POMDP 扩展记 $cal(M)_P$], [第 2 章],
     [$cal(S)$, $cal(A)$, $cal(O)$], [状态、动作、观测空间（$cal(A)$ 在 RSI 语境下另指系统状态空间，见文末约定）], [第 2 章],
-    [$P(s' mid s, a)$], [转移核（环境动力学）；观测核记 $O(o mid s', a)$], [第 2 章],
+    [$P(s' divides s, a)$], [转移核（环境动力学）；观测核记 $O(o divides s', a)$], [第 2 章],
     [$r(s, a)$, $gamma$], [奖励函数（轨迹简写 $r_t$）；折扣因子 $gamma in [0, 1]$], [第 2 章],
     [$tau$], [轨迹 $tau = (s_0, a_0, r_0, s_1, dots)$；环境交互时间指标记 $t$，与 RSI 世代指标 $k$ 区分], [第 2 章],
   ),
@@ -28,7 +28,7 @@
   table(
     columns: (auto, 1fr, 5.5em),
     [符号], [含义], [首次出现],
-    [$pi_theta (a mid s)$], [参数化随机策略；$theta$ 为策略参数（亦泛指模型权重）], [第 2 章],
+    [$pi_theta (a divides s)$], [参数化随机策略；$theta$ 为策略参数（亦泛指模型权重）], [第 2 章],
     [$V^pi (s)$, $Q^pi (s, a)$], [状态值函数与动作值函数；最优者记 $V^*$, $Q^*$], [第 2 章],
     [$A^pi (s, a)$], [优势函数 $A^pi = Q^pi - V^pi$], [第 2 章],
     [$J(theta)$], [期望回报目标 $J(theta) = EE_(tau ~ pi_theta) [sum_t gamma^t r_t]$；$hat(J)_n$ 为 $n$ 个样本的均值估计], [第 2 章],
@@ -100,7 +100,7 @@
 )
 
 #remark(title: [同名符号冲突的使用约定])[
-全书三处刻意的同名记号均按上下文区分：(i) $cal(A)$ 在第 2 章为动作空间、在第 4 章 RSI 形式化中为系统状态空间（$A_t in cal(A)$）；(ii) $cal(T)$ 在第 2 章为 Bellman 算子（总带作用对象 $(cal(T) V)(s)$）、在第 3 章为任务（总出现在 $cal(T)_i$ 或 $p(cal(T))$ 中）；(iii) $rho$ 为平均回报，占用测度一律写作 $rho^pi$ 或 $d^pi$。观测核 $O(o mid s', a)$ 不单独使用字母 $O$。
+全书三处刻意的同名记号均按上下文区分：(i) $cal(A)$ 在第 2 章为动作空间、在第 4 章 RSI 形式化中为系统状态空间（$A_t in cal(A)$）；(ii) $cal(T)$ 在第 2 章为 Bellman 算子（总带作用对象 $(cal(T) V)(s)$）、在第 3 章为任务（总出现在 $cal(T)_i$ 或 $p(cal(T))$ 中）；(iii) $rho$ 为平均回报，占用测度一律写作 $rho^pi$ 或 $d^pi$。观测核 $O(o divides s', a)$ 不单独使用字母 $O$。
 ]
 
 #heading(numbering: none)[附录 B　改进验证协议清单]

@@ -20,7 +20,7 @@
 ```text
 Typst 0.15.1 + cetz 0.3.4（vendored）
 106 页 A4 · 0 警告 · 0 未解析引用 · 编译约 4 秒
-pdftotext -layout | sha256 = 1d405be207e309dbf6aeaf8f7387d9d957a72f26259e2f3b3dba1d47100a3de3
+pdftotext -layout | sha256 = d9dece5cc397a1404c83f2e535e6308e1270747b0c4ed32f1568ec8f4c63897c
 ```
 
 该指纹用于回归：正文或版式若发生非预期变化，`just check` 之外还应比对这一指纹。
