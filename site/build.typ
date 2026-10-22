@@ -30,9 +30,21 @@
 #document("books/" + book.slug + ".html", title: book.title + " — Niubook")[
   #html.elem("link", attrs: (rel: "stylesheet", href: "../style.css"))
   #site-header("../index.html")
-  #book-head(book, book.slug + ".pdf", book.slug + ".jpg")
-  #html.elem("main", attrs: (class: "page"))[
-    #include "/site/books/embodied-rsi.typ"
+  #html.elem("div", attrs: (class: "book-layout"))[
+    #html.elem("aside", attrs: (class: "sidebar"))[
+      #html.elem("p", attrs: (class: "sidebar-label"))[目录]
+      #outline(title: none, depth: 1)
+    ]
+    #html.elem("div", attrs: (class: "book-main"))[
+      #html.elem("details", attrs: (class: "toc-mobile"))[
+        #html.elem("summary")[目录]
+        #outline(title: none, depth: 1)
+      ]
+      #book-head(book, book.slug + ".pdf", book.slug + ".jpg")
+      #html.elem("main", attrs: (class: "page"))[
+        #include "/site/books/embodied-rsi.typ"
+      ]
+    ]
   ]
   #site-footer()
 ]

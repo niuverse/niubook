@@ -90,6 +90,10 @@ def main() -> int:
         check=True, cwd=ROOT,
     )
 
+    fonts = ROOT / "site" / "fonts"
+    if fonts.exists():
+        shutil.copytree(fonts, DIST / "fonts")
+
     out = DIST / "books"
     out.mkdir(parents=True, exist_ok=True)
     for book in catalog["books"]:

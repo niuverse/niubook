@@ -9,9 +9,14 @@
   if ch == 0 { str(n) } else { str(ch) + "-" + str(n) }
 })
 
-#html.elem("nav", attrs: (class: "toc"))[
-  #outline(title: [目录], depth: 1)
-]
+// 行间公式用 Typst 自己的排版（SVG）；行内公式保留 MathML。
+#show math.equation: it => {
+  if target() == "html" and it.block {
+    html.elem("div", attrs: (class: "equation"))[#html.frame(it)]
+  } else {
+    it
+  }
+}
 
 #include "/books/embodied-rsi/chapters/preface.typ"
 #include "/books/embodied-rsi/chapters/ch01.typ"

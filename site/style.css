@@ -1,13 +1,18 @@
 :root {
-  --paper: #f7f4ec;
-  --ink: #23211d;
-  --muted: #6b665c;
-  --rule: #d9d4c8;
-  --accent: #0f5c5c;
-  --accent-2: #8c5a2b;
-  --serif: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
-  --sans: Inter, "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --paper: #ffffff;
+  --ink: #1d1d1b;
+  --muted: #6a6a66;
+  --rule: #e5e3de;
+  --accent: #0d5c5c;
+  --accent-2: #8a5a2b;
+  --sans: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", Inter, "Segoe UI", system-ui, sans-serif;
   --mono: "DejaVu Sans Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+@font-face {
+  font-family: "Latin Modern Math";
+  src: url("fonts/latinmodern-math.otf") format("opentype");
+  font-display: swap;
 }
 
 * { box-sizing: border-box; }
@@ -18,10 +23,11 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 19px;
-  line-height: 1.9;
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
@@ -30,7 +36,7 @@ a:hover { color: var(--accent-2); }
 /* ---------------------------------------------------------- site chrome */
 .site-head,
 .site-foot {
-  width: min(100%, 980px);
+  width: min(100%, 1180px);
   margin: 0 auto;
   padding-left: 28px;
   padding-right: 28px;
@@ -41,13 +47,12 @@ a:hover { color: var(--accent-2); }
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
-  padding-top: 30px;
+  padding-top: 28px;
   padding-bottom: 18px;
   border-bottom: 1px solid var(--rule);
 }
 
 .brand {
-  font-family: var(--sans);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.3em;
@@ -58,7 +63,6 @@ a:hover { color: var(--accent-2); }
 .site-head nav {
   display: flex;
   gap: 26px;
-  font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.06em;
 }
@@ -70,14 +74,13 @@ a:hover { color: var(--accent-2); }
   padding-top: 24px;
   padding-bottom: 56px;
   border-top: 1px solid var(--rule);
-  font-family: var(--sans);
   font-size: 12px;
   color: var(--muted);
 }
 
 .site-foot p { margin: 0; }
 
-/* ------------------------------------------------------------ page body */
+/* ------------------------------------------------------------ catalogue */
 .page {
   width: min(100%, 820px);
   margin: 0 auto;
@@ -88,15 +91,15 @@ a:hover { color: var(--accent-2); }
   margin: 0 0 0.6em;
   padding-bottom: 0.3em;
   border-bottom: 2px solid var(--accent);
-  font-size: 2.7em;
-  font-weight: 500;
+  font-size: 2.6em;
+  font-weight: 600;
   line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-/* ---------------------------------------------------------------- index */
 .book-list {
   list-style: none;
-  margin: 2.4em 0 0;
+  margin: 2.2em 0 0;
   padding: 0;
 }
 
@@ -113,7 +116,6 @@ a:hover { color: var(--accent-2); }
 }
 
 .book-index {
-  font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.1em;
   color: var(--accent-2);
@@ -121,7 +123,8 @@ a:hover { color: var(--accent-2); }
 
 .book-title {
   display: block;
-  font-size: 1.5em;
+  font-size: 1.45em;
+  font-weight: 600;
   line-height: 1.3;
 }
 
@@ -133,7 +136,6 @@ a:hover { color: var(--accent-2); }
 }
 
 .book-row .book-meta {
-  font-family: var(--sans);
   font-size: 12px;
   color: var(--muted);
   white-space: nowrap;
@@ -141,31 +143,97 @@ a:hover { color: var(--accent-2); }
 
 .book-row:hover .book-title { color: var(--accent); }
 
+/* --------------------------------------------------------- book layout */
+.book-layout {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow: auto;
+  padding: 52px 20px 40px 0;
+  border-right: 1px solid var(--rule);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.sidebar-label {
+  margin: 0 0 12px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sidebar ol,
+.toc-mobile ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li,
+.toc-mobile li { margin: 0; }
+
+.sidebar a {
+  display: block;
+  padding: 4px 0 4px 12px;
+  border-left: 2px solid transparent;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: var(--ink);
+  border-left-color: var(--accent);
+}
+
+.sidebar .prefix,
+.toc-mobile .prefix {
+  display: inline-block;
+  min-width: 1.8em;
+  font-size: 0.8em;
+  color: var(--accent-2);
+}
+
+.book-main { min-width: 0; }
+
+.book-main .book-head {
+  width: auto;
+  margin: 0;
+  padding: 52px 0 32px;
+}
+
+.book-main .page {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 88px;
+}
+
+.toc-mobile { display: none; }
+
 /* ------------------------------------------------------------ book head */
 .book-head {
-  width: min(100%, 820px);
-  margin: 0 auto;
-  padding: 54px 28px 34px;
-  border-bottom: 2px solid var(--accent);
   display: grid;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: minmax(0, 1fr) 240px;
   gap: 44px;
   align-items: start;
+  border-bottom: 2px solid var(--accent);
 }
 
 .book-head-text { min-width: 0; }
 
-.cover {
-  display: block;
-  width: 240px;
-  height: auto;
-  border: 1px solid var(--rule);
-  box-shadow: 0 22px 46px -34px rgba(35, 33, 29, 0.5);
-}
-
 .eyebrow {
-  margin: 0 0 22px;
-  font-family: var(--sans);
+  margin: 0 0 20px;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -174,21 +242,20 @@ a:hover { color: var(--accent-2); }
 
 .book-head h1 {
   margin: 0 0 10px;
-  font-size: 2.7em;
-  font-weight: 500;
-  line-height: 1.16;
-  letter-spacing: -0.01em;
+  font-size: 2.6em;
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
   margin: 0 0 10px;
-  font-size: 1.32em;
+  font-size: 1.28em;
   color: var(--muted);
 }
 
 .title-en {
   margin: 0 0 18px;
-  font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--muted);
@@ -196,7 +263,6 @@ a:hover { color: var(--accent-2); }
 
 .book-head .book-meta {
   margin: 0;
-  font-family: var(--sans);
   font-size: 12px;
   color: var(--muted);
 }
@@ -204,18 +270,17 @@ a:hover { color: var(--accent-2); }
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 16px;
   align-items: center;
-  margin: 26px 0 0;
+  margin: 24px 0 0;
 }
 
 .btn {
   display: inline-block;
-  padding: 10px 22px;
+  padding: 9px 20px;
   border: 1px solid var(--ink);
-  font-family: var(--sans);
   font-size: 13px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--ink);
   text-decoration: none;
 }
@@ -225,6 +290,14 @@ a:hover { color: var(--accent-2); }
 .btn.ghost { border-color: var(--rule); color: var(--muted); }
 .btn.ghost:hover { background: transparent; border-color: var(--accent); color: var(--accent); }
 
+.cover {
+  display: block;
+  width: 240px;
+  height: auto;
+  border: 1px solid var(--rule);
+  box-shadow: 0 22px 46px -34px rgba(29, 29, 27, 0.45);
+}
+
 /* ------------------------------------------------------------- contents */
 .page p {
   margin: 0 0 1.05em;
@@ -232,23 +305,23 @@ a:hover { color: var(--accent-2); }
 }
 
 .page h2 {
-  margin: 2.3em 0 0.7em;
-  padding-bottom: 0.3em;
+  margin: 2.2em 0 0.7em;
+  padding-bottom: 0.28em;
   border-bottom: 1px solid var(--rule);
-  font-size: 1.65em;
-  font-weight: 500;
-  line-height: 1.3;
+  font-size: 1.52em;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .page h3 {
-  margin: 1.9em 0 0.55em;
-  font-size: 1.25em;
-  font-weight: 500;
+  margin: 1.8em 0 0.5em;
+  font-size: 1.18em;
+  font-weight: 600;
 }
 
 .page h4 {
-  margin: 1.5em 0 0.45em;
-  font-size: 1.05em;
+  margin: 1.4em 0 0.4em;
+  font-size: 1.02em;
   font-weight: 600;
 }
 
@@ -262,7 +335,7 @@ a:hover { color: var(--accent-2); }
 .page > div:has(> p:first-child + p) {
   margin: 1.5em 0;
   padding: 14px 20px;
-  background: #f1ede2;
+  background: #f7f7f4;
   border-left: 3px solid var(--accent);
 }
 
@@ -271,53 +344,30 @@ a:hover { color: var(--accent-2); }
   color: var(--accent);
 }
 
-/* ------------------------------------------------------------------ toc */
-.toc {
-  margin: 0 0 2.8em;
-  padding: 20px 0 24px;
-  border-bottom: 1px solid var(--rule);
+/* ------------------------------------------------------------- equation */
+.equation {
+  margin: 1.5em 0;
+  overflow-x: auto;
 }
 
-.toc h2 {
-  margin: 0 0 14px;
-  padding: 0;
-  border: 0;
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
+.equation svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
 }
 
-.toc ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  columns: 2;
-  column-gap: 46px;
-}
-
-.toc li {
-  break-inside: avoid;
-  padding: 3px 0;
-  font-size: 0.9em;
-}
-
-.toc a { color: var(--ink); text-decoration: none; }
-.toc a:hover { color: var(--accent); }
-
-.toc .prefix {
-  display: inline-block;
-  min-width: 2.2em;
-  font-family: var(--sans);
-  font-size: 0.8em;
-  color: var(--accent-2);
+math {
+  font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", serif;
+  font-size: 1.04em;
 }
 
 /* -------------------------------------------------------------- figures */
-figure { margin: 2em 0; }
+figure { margin: 1.9em 0; }
 
 figure svg {
+  display: block;
+  margin: 0 auto;
   max-width: 100%;
   height: auto;
 }
@@ -335,7 +385,7 @@ table {
   width: 100%;
   margin: 1.4em 0;
   border-collapse: collapse;
-  font-size: 0.93em;
+  font-size: 0.92em;
 }
 
 th, td {
@@ -347,7 +397,6 @@ th, td {
 
 th {
   border-bottom: 1px solid var(--ink);
-  font-family: var(--sans);
   font-size: 0.88em;
   font-weight: 600;
 }
@@ -361,7 +410,7 @@ code, pre {
 pre {
   padding: 14px 16px;
   overflow-x: auto;
-  background: #f1ede2;
+  background: #f7f7f4;
   border: 1px solid var(--rule);
 }
 
@@ -369,29 +418,71 @@ blockquote {
   margin: 1.4em 0;
   padding: 0.2em 1em;
   border-left: 3px solid var(--accent);
-  color: #4a463d;
-}
-
-math { font-size: 1.03em; }
-
-math[display="block"] {
-  display: block;
-  overflow-x: auto;
-  padding: 2px 0;
+  color: #55534e;
 }
 
 /* -------------------------------------------------------------- mobile */
+@media (max-width: 920px) {
+  .book-layout {
+    display: block;
+    padding: 0 20px;
+  }
+
+  .sidebar { display: none; }
+
+  .toc-mobile {
+    display: block;
+    margin: 22px 0 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .toc-mobile summary {
+    padding: 12px 0;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .toc-mobile summary::after {
+    content: "+";
+    float: right;
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  .toc-mobile[open] summary::after { content: "−"; }
+
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+
+  .toc-mobile ol { padding: 0 0 14px; }
+
+  .toc-mobile li {
+    padding: 3px 0;
+    font-size: 0.95em;
+  }
+
+  .toc-mobile a { color: var(--muted); text-decoration: none; }
+  .toc-mobile a:hover { color: var(--accent); }
+
+  .book-main .book-head {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px 0 28px;
+  }
+
+  .book-head h1 { font-size: 2em; }
+  .cover { width: 200px; }
+}
+
 @media (max-width: 700px) {
   body { font-size: 17px; }
 
   .site-head,
   .site-foot,
-  .page,
-  .book-head { padding-left: 20px; padding-right: 20px; }
-
-  .book-head { grid-template-columns: 1fr; gap: 28px; }
-  .book-head h1 { font-size: 2em; }
-  .cover { width: 200px; }
+  .page { padding-left: 20px; padding-right: 20px; }
 
   .page > h1 { font-size: 2.1em; }
 
@@ -400,12 +491,10 @@ math[display="block"] {
     gap: 8px 14px;
   }
 
-  .book-meta {
+  .book-row .book-meta {
     grid-column: 2;
     white-space: normal;
   }
-
-  .toc ol { columns: 1; }
 
   .actions { gap: 12px; }
 }

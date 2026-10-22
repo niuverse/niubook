@@ -39,6 +39,7 @@ site/build.typ           Typst bundle 入口：书目、书页、404
 site/lib.typ             书目与书页共用的页头/页脚
 site/style.css           书目与书页共用的 19px 阅读样式
 site/books/<slug>.typ    每本书的 HTML 正文入口
+site/fonts/              自托管的 Latin Modern Math（MathML 行内公式）
 catalog/books.json       由 book.toml 与源文件生成的机读书目
 docs/                    书籍契约、写作规范、生产流程、许可调研
 dist/                    构建产物（git 忽略）
