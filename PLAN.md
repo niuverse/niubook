@@ -288,7 +288,7 @@ reports/           citations.md, consistency.md, gates.json
   `27185eec…` 与导入前完全一致；v1.0.1 字形修复后为 `b8ff45df…`，页数不变；
 - 版式抽到 `toolchain/typst/{tokens,components,base}.typ`，`template.typ` 缩到 5 行；
 - `book.toml → _meta.typ` 生成与同步门禁；G0–G6 门禁全部可执行；
-- `catalog/books.json`、静态站点与 `dist/site` 构建；
+- `catalog/books.json`、mdBook 站点与 `dist/site` 构建；
 - GitHub Actions：PR 跑 CI，`main` 推送到 Pages；
 - 许可与 AI 声明：`LICENSE` / `LICENSE-CODE` / `NOTICE` / `docs/LICENSING.md`。
 
@@ -297,7 +297,7 @@ reports/           citations.md, consistency.md, gates.json
 | 计划 | 实际 | 原因 |
 | --- | --- | --- |
 | 独立 Python 包 `src/niubook` | `scripts/` 标准库脚本 | 依赖为零，`just` 已足够；变大再包化 |
-| Typst HTML 导出 | 站点 + 浏览器原生 PDF 阅读器 | 0.13 的 HTML 导出报错（`set page` 不允许），且 CeTZ/数学会失真 |
+| Typst HTML 导出 | mdBook 站点 + PDF 直链 | 0.13 的 HTML 导出报错（`set page` 不允许），且 CeTZ/数学会失真 |
 | PDF 不入库（本文已建议） | 采纳 | CI 重建并部署，Pages 提供稳定下载链接 |
 | `just new` 脚手架 | 暂缓，README/AGENTS 给出复制步骤 | 第 2 本书开写时再做，避免凭空设计 |
 | 引用审计自动改书目 | 只出报告，不自动改 | 标题匹配不等于作者/venue 核实，需人工判断 |
@@ -307,4 +307,6 @@ reports/           citations.md, consistency.md, gates.json
 - 24 条 `UNVERIFIED` 文献的逐条人工核验（`REVIEW.md`）；
 - PDF 内页版权/AI 标识页（下一版，会改变分页基线）；
 - 第 2 本书（生产线的真正验收）。
+
+后续变更：2026-10-22 站点从自绘 HTML 迁移到 mdBook 0.5.3（书目、书页、搜索、打印、404 由 mdBook 生成），PDF 仍为唯一下载格式。
 

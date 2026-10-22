@@ -21,6 +21,17 @@ url = "https://github.com/typst/typst/releases/download/v{version}/typst-x86_64-
 sha256 = ""
 archive_root = "typst-x86_64-apple-darwin"
 
+[mdbook]
+version = "0.5.3"
+
+[mdbook.platforms.linux-x86_64]
+url = "https://github.com/rust-lang/mdBook/releases/download/v{version}/mdbook-v{version}-x86_64-unknown-linux-musl.tar.gz"
+sha256 = "dfb86d8e20a3fed91bf549aa450b9d7f46a275b700292e050cdfd3171732e7fd"
+
+[mdbook.platforms.linux-aarch64]
+url = "https://github.com/rust-lang/mdBook/releases/download/v{version}/mdbook-v{version}-aarch64-unknown-linux-musl.tar.gz"
+sha256 = ""
+
 [packages]
 cetz = "0.3.4"
 oxifmt = "0.2.1"

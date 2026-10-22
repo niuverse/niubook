@@ -35,7 +35,7 @@ meta book="embodied-rsi":
 catalog:
     python3 scripts/catalog.py --write
 
-# Render the static site into dist/site
+# Build the mdBook catalogue site into dist/site
 site:
     python3 scripts/site.py
 

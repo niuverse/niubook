@@ -1,0 +1,18 @@
+[book]
+title = "Niubook"
+authors = ["Niubook"]
+language = "zh-CN"
+src = "src"
+description = "AI 生成书稿的合集：Typst 源码、可复现构建与 PDF 下载"
+
+[build]
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "light"
+site-url = "/niubook/"
+git-repository-url = "https://github.com/niuverse/niubook"
+additional-css = ["theme/niubook.css"]
+no-section-label = true
+fold = { enable = true, level = 1 }

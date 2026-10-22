@@ -6,6 +6,7 @@
 | 组件 | 版本 | 许可 | 位置 |
 | --- | --- | --- | --- |
 | [Typst](https://typst.app/) | 0.13.1 | Apache-2.0 | `.tools/typst`（构建时下载，不入库） |
+| [mdBook](https://github.com/rust-lang/mdBook) | 0.5.3 | MPL-2.0 | `.tools/mdbook`（构建时下载，不入库） |
 | [CeTZ](https://github.com/cetz-package/cetz) | 0.3.4 | LGPL-3.0-or-later | `toolchain/vendor/preview/cetz/0.3.4/` |
 | [oxifmt](https://github.com/PgBiel/oxifmt) | 0.2.1 | MIT-0 | `toolchain/vendor/preview/oxifmt/0.2.1/` |
 

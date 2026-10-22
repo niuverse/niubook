@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Download and verify the pinned Typst binary into .tools/typst.
+"""Download and verify the pinned Typst and mdBook binaries into .tools/.
 
-The version and checksum live in toolchain/versions.toml. Builds never
+Versions and checksums live in toolchain/versions.toml. Builds never
 download Typst packages: CeTZ and friends are vendored under toolchain/vendor.
 """
 
@@ -20,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSIONS = ROOT / "toolchain" / "versions.toml"
-DEST = ROOT / ".tools" / "typst"
+TOOLS = ("typst", "mdbook")
 
 
 def load_config() -> dict:
@@ -28,17 +28,22 @@ def load_config() -> dict:
         return tomllib.load(fh)
 
 
-def current_version() -> str | None:
-    if not DEST.exists():
+def binary(name: str) -> Path:
+    return ROOT / ".tools" / name
+
+
+def current_version(name: str) -> str | None:
+    path = binary(name)
+    if not path.exists():
         return None
     try:
         out = subprocess.run(
-            [str(DEST), "--version"], capture_output=True, text=True, timeout=10
+            [str(path), "--version"], capture_output=True, text=True, timeout=10
         ).stdout.strip()
     except (OSError, subprocess.SubprocessError):
         return None
     parts = out.split()
-    return parts[1] if len(parts) >= 2 else None
+    return parts[1].lstrip("v") if len(parts) >= 2 else None
 
 
 def sha256(path: Path) -> str:
@@ -68,37 +73,42 @@ def download(url: str, target: Path) -> None:
         shutil.copyfileobj(response, fh)
 
 
-def install(cfg: dict, force: bool = False, archive_path: Path | None = None) -> None:
-    typst = cfg["typst"]
-    version = typst["version"]
-    have = current_version()
+def install(
+    name: str,
+    cfg: dict,
+    *,
+    force: bool = False,
+    archive_path: Path | None = None,
+) -> None:
+    version = cfg["version"]
+    have = current_version(name)
     if have == version and not force:
-        print(f"typst {version} already installed at {DEST.relative_to(ROOT)}")
+        print(f"{name} {version} already installed at {binary(name).relative_to(ROOT)}")
         return
     if have:
-        print(f"replacing typst {have} with {version}")
+        print(f"replacing {name} {have} with {version}")
 
     key = f"{platform.system().lower()}-{platform.machine().lower()}"
-    platforms = typst.get("platforms", {})
+    platforms = cfg.get("platforms", {})
     if key not in platforms:
         raise SystemExit(
-            f"no pinned Typst build for platform {key!r}; "
+            f"no pinned {name} build for platform {key!r}; "
             f"available: {', '.join(sorted(platforms))}"
         )
     spec = platforms[key]
     url = spec["url"].format(version=version)
     expected = spec["sha256"]
-    archive_root = spec["archive_root"]
+    archive_root = spec.get("archive_root", "")
+    member = f"{archive_root}/{name}" if archive_root else name
     if not expected:
         raise SystemExit(
-            f"no sha256 pinned for {key} in toolchain/versions.toml; "
-            "add the checksum before bootstrapping on this platform"
+            f"no sha256 pinned for {name} on {key} in toolchain/versions.toml"
         )
 
-    DEST.parent.mkdir(parents=True, exist_ok=True)
+    binary(name).parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
-        archive = tmp / "typst.tar.xz"
+        archive = tmp / "package.tar.gz"
         if archive_path is not None:
             print(f"  using local archive {archive_path}", flush=True)
             shutil.copyfile(archive_path, archive)
@@ -109,38 +119,53 @@ def install(cfg: dict, force: bool = False, archive_path: Path | None = None) ->
             raise SystemExit(
                 f"checksum mismatch for {url}\n  expected {expected}\n  actual   {actual}"
             )
-        with tarfile.open(archive, "r:xz") as tar:
-            member = tar.getmember(f"{archive_root}/typst")
-            extracted = tar.extractfile(member)
+        with tarfile.open(archive, "r:*") as tar:
+            try:
+                extracted = tar.extractfile(member)
+            except KeyError:
+                raise SystemExit(f"{member} not found in {url}") from None
             if extracted is None:
-                raise SystemExit("archive does not contain the typst binary")
-            tmp_bin = tmp / "typst-bin"
+                raise SystemExit(f"{member} is not a regular file in {url}")
+            tmp_bin = tmp / f"{name}-bin"
             tmp_bin.write_bytes(extracted.read())
             tmp_bin.chmod(0o755)
-        os.replace(tmp_bin, DEST)
+        os.replace(tmp_bin, binary(name))
 
-    print(f"installed typst {version} -> {DEST.relative_to(ROOT)}")
+    print(f"installed {name} {version} -> {binary(name).relative_to(ROOT)}")
 
 
 def main(argv: list[str]) -> int:
     cfg = load_config()
-    archive_path = None
+    from_path = None
     if "--from" in argv:
         index = argv.index("--from")
         try:
-            archive_path = Path(argv[index + 1]).expanduser().resolve()
+            from_path = Path(argv[index + 1]).expanduser().resolve()
         except IndexError:
             print("--from requires a path", file=sys.stderr)
             return 2
+
     if "--check" in argv:
-        version = cfg["typst"]["version"]
-        have = current_version()
-        if have == version:
-            print(f"typst {version} ready")
-            return 0
-        print(f"typst {version} missing (found {have or 'none'})", file=sys.stderr)
-        return 1
-    install(cfg, force="--force" in argv, archive_path=archive_path)
+        failures = 0
+        for name in TOOLS:
+            version = cfg[name]["version"]
+            have = current_version(name)
+            if have == version:
+                print(f"{name} {version} ready")
+            else:
+                failures += 1
+                print(f"{name} {version} missing (found {have or 'none'})", file=sys.stderr)
+        return 1 if failures else 0
+
+    force = "--force" in argv
+    targets = [arg for arg in argv if arg in TOOLS] or list(TOOLS)
+    for name in targets:
+        install(
+            name,
+            cfg[name],
+            force=force,
+            archive_path=from_path if (len(targets) == 1 or name == "typst") else None,
+        )
     return 0
 
 
