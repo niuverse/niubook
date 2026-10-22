@@ -287,12 +287,20 @@ def render_book(book: dict, pdf_bytes: int, has_cover: bool) -> str:
 {READER_JS}
 <script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>"""
 
+    extra_head = (
+        f'<meta property="og:type" content="book">\n'
+        f'<meta property="og:image" content="{BASE_URL}/books/{slug}/cover.jpg">\n'
+        f'<meta name="author" content="{esc(book["author"])}">\n'
+        f'<link rel="alternate" type="application/pdf" href="{slug}.pdf">\n'
+    )
+
     return page(
         title=f"{book['title']} — Niubook",
         description=book["abstract"][:140],
         body=body,
         root=root,
         canonical=canonical,
+        extra_head=extra_head,
     )
 
 

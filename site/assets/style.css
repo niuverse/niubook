@@ -563,14 +563,22 @@ footer {
   .wrap { width: calc(100% - 40px); }
   .masthead { padding-top: 24px; }
   .masthead nav { gap: 18px; }
+  .hero { padding: 56px 0 72px; }
   .hero h1 { font-size: clamp(38px, 10.5vw, 52px); }
   .book-row {
-    grid-template-columns: 40px 1fr 24px;
-    gap: 16px;
+    grid-template-columns: 36px 1fr 22px;
+    grid-template-areas:
+      "index body arrow"
+      "index meta arrow";
+    column-gap: 16px;
+    row-gap: 8px;
+    align-items: start;
     padding: 26px 0;
   }
-  .row-meta { grid-column: 2; grid-row: 2; font-size: 11px; }
-  .row-arrow { grid-row: 1 / span 2; align-self: center; }
+  .row-index { grid-area: index; padding-top: 6px; }
+  .row-body { grid-area: body; min-width: 0; }
+  .row-meta { grid-area: meta; font-size: 11px; white-space: normal; }
+  .row-arrow { grid-area: arrow; align-self: center; }
   .book-overview { grid-template-columns: 1fr; gap: 36px; }
   .cover img { max-width: 240px; }
   .facts { grid-template-columns: 1fr; }
