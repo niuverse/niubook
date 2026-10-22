@@ -25,8 +25,8 @@ jobs:
           python-version: "3.12"
 
       - name: Install system dependencies
+        timeout-minutes: 5
         run: |
-          sudo apt-get update
           sudo apt-get install -y --no-install-recommends fonts-noto-cjk poppler-utils
 
       - name: Install pinned Typst
