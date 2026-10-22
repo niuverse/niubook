@@ -51,6 +51,7 @@ just site          # 生成 dist/site
 | 系列配色、字体、页眉版式 | `toolchain/typst/tokens.typ`、`base.typ` |
 | 定理环境、要点框、数学简写 | `toolchain/typst/components.typ` |
 | 章节正文 | `books/<slug>/chapters/*.typ` |
+| 图的布局与箭头 | 对应章节的 `cetz.canvas`；先读 `docs/FIGURES.md` |
 | 参考文献 | `books/<slug>/references.bib` + `bibkeys.txt` |
 | 门禁规则 | `scripts/check.py` |
 | 站点版式 | `scripts/site.py`、`site/assets/style.css` |

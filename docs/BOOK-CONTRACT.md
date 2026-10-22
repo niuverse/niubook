@@ -95,7 +95,7 @@ pipeline = "..."
 
 文本指纹用于判断"内容是否被意外改动"：版式重构不应改变 `pdftotext -layout`
 的输出哈希。第 1 本书的基线是
-`ca84e4531f6accbf155da80edd46fba61ca43d96df9ebb22b97a9ccf58f76e10`（v1.0.1）。
+`b8ff45df38cef8911749f35a2551b5569478a7e16b27f1036f239da3932f9130`（v1.0.1）。
 
 ## 5. 门禁
 

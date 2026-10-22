@@ -99,21 +99,17 @@ $ EE[Delta U(m) | cal(E)_t] > c_"gen"(m) + c_"ver"(m) + lambda dot.op R(m), $ <e
     arr((4.55, 3.2), (5.15, 3.2))
     arr((7.05, 3.2), (7.65, 3.2))
     arr((9.55, 3.2), (10.15, 3.2))
-    arr((11.1, 2.8), (8.7, 1.35))
+    arr((11.1, 2.8), (8.9, 1.35))
     arr((9.55, 0.9), (10.15, 0.9))
-    arr((6.1, 2.8), (4.0, 2.75), dashed: true)
-    content((5.0, 2.48), frame: "rect", fill: white, stroke: none, padding: 1.2pt, text(size: 6.8pt, fill: acc2)[静态失败→修订])
-    arr((8.6, 2.8), (6.5, 2.55), dashed: true)
-    content((7.5, 2.4), frame: "rect", fill: white, stroke: none, padding: 1.2pt, text(size: 6.8pt, fill: acc2)[验证失败→重新提案])
-    arr((11.1, 2.8), (3.6, 1.32), dashed: true)
-    content((8.3, 1.85), frame: "rect", fill: white, stroke: none, padding: 1.2pt, text(size: 6.8pt, fill: acc2)[回归失败→拒绝归档])
-    arr((8.6, 0.5), (6.95, 0.75), dashed: true)
-    content((8.05, 0.28), frame: "rect", fill: white, stroke: none, padding: 1.2pt, text(size: 6.8pt, fill: acc2)[金丝雀异常])
-    arr((11.1, 0.5), (6.3, 0.62), dashed: true)
-    content((9.4, 0.16), frame: "rect", fill: white, stroke: none, padding: 1.2pt, text(size: 6.8pt, fill: acc2)[事后异常→回滚])
-    arr((2.95, 0.9), (1.5, 2.75), dashed: true)
-    content((1.7, 1.85), frame: "rect", fill: white, stroke: none, padding: 1.2pt, text(size: 6.8pt, fill: acc2)[证据回流])
-    arr((6.1, 1.3), (1.3, 2.75), dashed: true)
+
+    // 失败总线：走两排盒子之间的空白带，避免穿越标签
+    line((11.1, 2.8), (11.1, 2.1), (1.35, 2.1), (1.35, 2.75), mark: (end: ">"), stroke: (paint: acc2, thickness: 0.8pt, dash: "dashed"))
+    content((6.2, 1.94), frame: "rect", fill: white, stroke: none, padding: 1.4pt, text(size: 6.8pt, fill: acc2)[失败 → 修订 / 拒绝 / 回滚])
+
+    // 异常 → 回滚：底排下方单独走线
+    line((7.55, 0.9), (7.15, 0.9), mark: (end: ">"), stroke: (paint: acc2, thickness: 0.8pt, dash: "dashed"))
+    line((11.1, 0.51), (11.1, 0.18), (6.1, 0.18), (6.1, 0.51), mark: (end: ">"), stroke: (paint: acc2, thickness: 0.8pt, dash: "dashed"))
+    content((8.6, 0.02), frame: "rect", fill: white, stroke: none, padding: 1.4pt, text(size: 6.8pt, fill: acc2)[金丝雀 / 事后异常 → 回滚])
   }),
   caption: [提案→门禁→提交→回滚状态机。实线为正常流向；虚线为异常流向——各级失败回到提案生成或拒绝归档，金丝雀与事后异常触发回滚。拒绝的修改不入档，但其谱系与失败证据必须回流，供下一轮生成使用。],
 ) <fig:gate>

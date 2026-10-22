@@ -39,13 +39,13 @@
     arr((3.2, 6.1), (5.3, 6.1))
     // harness 容器
     rect((0.5, 2.6), (13.5, 5.0), radius: 0.12, fill: softbg, stroke: 0.9pt + acc)
-    content((2.35, 4.72), text(size: 7.5pt, fill: acc, weight: "bold")[harness/ —— Agent-Native Harness])
+    content((0.72, 4.72), anchor: "west", text(size: 7.5pt, fill: acc, weight: "bold")[harness/ —— Agent-Native Harness])
     let xs = (1.95, 4.5, 7.05, 9.6, 12.15)
     let labs = ([task_gen\ 任务生成], [orchestrator\ 编排执行], [evaluator\ 指标+归因], [proposal\ 改进提案], [memory\ 经验记忆])
     for i in range(5) { box(xs.at(i), 3.5, labs.at(i), acc) }
     // sim 容器
     rect((2.3, 0.3), (8.6, 1.7), radius: 0.12, fill: bluebg, stroke: 0.9pt + acc)
-    content((4.15, 1.42), text(size: 7.5pt, fill: acc, weight: "bold")[sim/ —— 仿真执行层])
+    content((2.52, 1.48), anchor: "west", text(size: 7.5pt, fill: acc, weight: "bold")[sim/ —— 仿真执行层])
     box(3.7, 0.8, [point_mass\ MuJoCo 质点环境], acc, fc: white)
     box(7.0, 0.8, [controller\ PD 控制器(被改进)], acc2, fc: white)
     // 主循环到各模块

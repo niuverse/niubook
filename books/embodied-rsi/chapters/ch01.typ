@@ -129,8 +129,8 @@ $ "PRSI" := (cal(H), Theta, Phi, E), $ <eq:prsi>
 #figure(
   cetz.canvas(length: 1cm, {
     import cetz.draw: *
-    let r = 4.3
-    let w = 2.6
+    let r = 4.6
+    let w = 2.2
     let h = 0.72
     let labels = (
       [① 任务生成], [② 实验设计], [③ 仿真执行],
@@ -148,7 +148,7 @@ $ "PRSI" := (cal(H), Theta, Phi, E), $ <eq:prsi>
       let dx = c2.at(0) - c1.at(0)
       let dy = c2.at(1) - c1.at(1)
       let nrm = calc.sqrt(dx * dx + dy * dy)
-      let off = 1.42
+      let off = 1.25
       let p1 = (c1.at(0) + dx / nrm * off, c1.at(1) + dy / nrm * off)
       let p2 = (c2.at(0) - dx / nrm * off, c2.at(1) - dy / nrm * off)
       line(p1, p2, mark: (end: ">", scale: 1.6), stroke: 1pt + accent)

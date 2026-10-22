@@ -23,19 +23,19 @@
     content("root", text(size: 8.5pt, fill: white)[具身 RSI \ 风险全集])
     // 四个类别 + 叶节点
     let cats = (
-      (6.05, [产物层\ （模型·工件）], [奖励黑客与规范博弈（16.3）\ emergent misalignment\ 自毒化工件（EvoMal）]),
-      (4.35, [回路层\ （harness·验证·记忆）], [递归坍缩与饱和（16.2）\ harness 篡改：虚报改进\ 评估污染：自出题自考评\ 谱系级漂移（16.5）]),
-      (2.45, [物理层\ （具身特有）], [约束违反与不可逆损伤\ （CMDP/CPO，16.4）\ 传感器操纵：物理版\ wireheading（第 4 章）\ 本体论漂移]),
-      (0.55, [生态与治理层\ （群体·机构）], [沙箱逃逸与权限扩张\ （16.5）\ 群体作弊传染与吹哨\ （16.6）\ 审计与披露缺失（16.6）]),
+      (6.0, [产物层\ （模型·工件）], [奖励黑客与规范博弈（16.3）\ emergent misalignment\ 自毒化工件（EvoMal）]),
+      (4.15, [回路层\ （harness·验证·记忆）], [递归坍缩与饱和（16.2）\ harness 篡改：虚报改进\ 评估污染与谱系漂移（16.5）]),
+      (2.3, [物理层\ （具身特有）], [约束违反与不可逆损伤\ CMDP/CPO · 物理版 wireheading\ 本体论漂移（第 4 章）]),
+      (0.45, [生态与治理层\ （群体·机构）], [沙箱逃逸与权限扩张（16.5）\ 群体作弊传染与吹哨（16.6）\ 审计与披露缺失（16.6）]),
     )
     let i = 0
     for (yc, label, leaves) in cats {
       let cname = "cat" + str(i)
       let lname = "leaf" + str(i)
-      rect((2.9, yc - 0.62), (5.5, yc + 0.62), radius: 0.1, fill: softbg, stroke: 0.8pt + accent, name: cname)
-      content((4.2, yc), text(size: 8pt, fill: accent.darken(10%))[#label])
-      rect((6.1, yc - 0.78), (14.5, yc + 0.78), radius: 0.1, fill: white, stroke: 0.6pt + softline, name: lname)
-      content((10.3, yc), text(size: 7.5pt)[#leaves])
+      rect((2.9, yc - 0.8), (6.0, yc + 0.8), radius: 0.1, fill: softbg, stroke: 0.8pt + accent, name: cname)
+      content((4.45, yc), text(size: 7.2pt, fill: accent.darken(10%))[#label])
+      rect((6.5, yc - 0.8), (14.4, yc + 0.8), radius: 0.1, fill: white, stroke: 0.6pt + softline, name: lname)
+      content((10.45, yc), text(size: 7pt)[#leaves])
       line("root.east", cname + ".west", mark: (end: ">"), stroke: 0.8pt + accent)
       line(cname + ".east", lname + ".west", mark: (end: ">"), stroke: 0.7pt + softline.darken(20%))
       i = i + 1

@@ -35,21 +35,25 @@
       line((x, 0.45), (x, 6.85), stroke: 0.35pt + sl)
       content((x, 0.15), text(size: 7pt, fill: gray.darken(20%))[#str(yr)])
     }
-    content((14.6, -0.28), anchor: "north-east", text(size: 7pt, fill: gray.darken(20%))[2026.10])
+    content((14.75, 0.08), anchor: "east", text(size: 7pt, fill: gray.darken(20%))[2026.10])
     // 系统散点：(时间, 泳道 y, 名, 标签 x, 标签 y)
     let sys = (
       (2022.30, 6.2, [SayCan], 2.1, 6.48), (2022.55, 6.2, [InnerMon.], 2.5, 5.78), (2022.72, 6.2, [CaP], 3.0, 6.48), (2023.52, 6.2, [VoxPoser], 5.0, 6.48),
       (2023.40, 3.7, [Voyager], 3.7, 3.98), (2023.45, 3.7, [RoboCat], 3.6, 3.28), (2023.75, 3.7, [Eureka], 4.9, 3.98), (2023.78, 3.7, [GenSim], 5.2, 2.95),
       (2023.85, 3.7, [RoboGen], 5.3, 4.32), (2024.05, 3.7, [AutoRT], 6.1, 3.28), (2024.45, 3.7, [DrEureka], 6.6, 3.98), (2024.75, 3.7, [GenSim2], 7.0, 2.95),
       (2025.70, 3.7, [SE-FM], 10.5, 3.98),
-      (2026.10, 1.2, [RISE], 11.9, 1.48), (2026.48, 1.2, [ENPIRE/RHO/HARBOR], 12.0, 0.82), (2026.50, 1.2, [ASPIRE], 12.6, 1.82), (2026.75, 1.2, [RSIGym], 14.3, 1.82),
-      (2026.77, 1.2, [EmbodiedRSI], 14.1, 1.48), (2026.78, 1.2, [SEAR/\ EmbodiedEvo], 13.95, 0.40),
+      (2026.10, 1.2, none, 0, 0), (2026.48, 1.2, none, 0, 0), (2026.50, 1.2, none, 0, 0),
+      (2026.75, 1.2, none, 0, 0), (2026.77, 1.2, none, 0, 0), (2026.78, 1.2, none, 0, 0),
     )
     for (t, y, name, lx, ly) in sys {
       let x = tx(t)
       circle((x, y), radius: 0.07, fill: if y > 5 { acc2 } else if y > 2 { acc } else { rgb("#a04a3a") }, stroke: none)
-      content((lx, ly), text(size: 6.5pt, fill: ink)[#name])
+      if name != none {
+        content((lx, ly), text(size: 6.5pt, fill: ink)[#name])
+      }
     }
+    // 2026 下半年标签集中在一行，避免与散点争空间
+    content((7.6, -0.55), text(size: 7pt, fill: gray.darken(25%))[2026 H2：RISE · ASPIRE · RSIGym · EmbodiedRSI · SEAR/EmbodiedEvo · ENPIRE/RHO/HARBOR])
     content((7.5, 7.25), text(size: 8pt, fill: gray.darken(30%))[2022 → 2026.10：LLM 在具身闭环中的角色从规划器（棕）经组件设计者（青）迁移到实验者（红）])
   }),
   caption: [系统谱系时间线（2022 → 2026.10）。纵轴为三级角色；L-E 泳道在 2026 年下半年急剧加密，与综述的统计吻合 @wang2026agenticrobotics。],

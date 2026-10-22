@@ -65,16 +65,16 @@ $ h_(t+1)", " a_t &= "Loop"(M, C_t, T, P) \
     rect((7.5, 0.35), (10.5, 1.25), radius: 0.12, fill: softbg, stroke: 0.8pt + accent2)
     content((9.0, 0.8), text(size: 8pt)[执行沙箱 Sandbox])
     // 中央 loop
-    rect((4.7, 2.7), (9.3, 4.95), radius: 0.15, fill: white, stroke: 1.1pt + accent)
-    content((7.0, 4.62), text(size: 8.5pt, weight: "bold", fill: accent)[主循环 Loop（控制流 + 上下文管理）])
+    rect((4.2, 2.7), (9.8, 4.95), radius: 0.15, fill: white, stroke: 1.1pt + accent)
+    content((7.0, 4.5), text(size: 8pt, weight: "bold", fill: accent)[主循环 Loop（控制流 + 上下文）])
     rect((5.6, 3.05), (8.4, 4.15), radius: 0.12, fill: softbg, stroke: 0.9pt + accent2)
     content((7.0, 3.6), text(size: 8pt)[模型 $M$（无状态策略 $pi_theta$）])
     // 连线
     line((7.0, 4.95), (7.0, 5.3), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
-    line((4.7, 4.1), (3.7, 4.05), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
-    line((4.7, 3.1), (3.7, 1.85), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
-    line((9.3, 4.1), (10.3, 4.05), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
-    line((9.3, 3.1), (10.3, 1.85), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
+    line((4.2, 4.1), (3.7, 4.05), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
+    line((4.2, 3.1), (3.7, 1.85), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
+    line((9.8, 4.1), (10.3, 4.05), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
+    line((9.8, 3.1), (10.3, 1.85), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
     line((5.9, 2.7), (5.4, 1.25), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
     line((8.3, 2.7), (8.9, 1.25), mark: (start: ">", end: ">"), stroke: 0.7pt + accent)
     // 环境（harness 之外）

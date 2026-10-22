@@ -75,7 +75,7 @@
       ("L4", [跨任务\ 元级改进]),
       ("L5", [逐轮收益递增\ ＋独立证据]),
     )
-    let y0 = 3.15; let y1 = 4.35
+    let y0 = 3.5; let y1 = 4.7
     for (i, (lv, desc)) in levels.enumerate() {
       let xa = 0.5 + i * 2.42
       let xb = xa + 2.22
@@ -93,33 +93,32 @@
     }
     // ---- 中排：里程碑盒 ----
     let ms = (
-      ((0.7, 1.45), (3.7, 2.9), "M1 近期 2026–28", [L2 整环闭合：\ 改进程序亦被改进\ 的具身闭环演示], 2),
-      ((4.35, 1.45), (7.35, 2.9), "M2 中期 2027–29", [L3 跨域迁移：\ 跨任务族迁移并带\ 来零样本增益], 3),
-      ((8.0, 1.45), (11.0, 2.9), "M3 远期 2028–30", [L4 递增收益迹象：\ 改进速率随代数上\ 升（配对受控）], 4),
-      ((11.65, 1.45), (14.65, 2.9), "M4 判据 2029–31", [L5 判据与标准：\ 社区协议与独立复\ 现、首个 L5 声明], 5),
+      ((0.7, 1.3), (3.7, 2.75), "M1 近期 2026–28", [L2 整环闭合：\ 改进程序亦被改进\ 的具身闭环演示], 2),
+      ((4.35, 1.3), (7.35, 2.75), "M2 中期 2027–29", [L3 跨域迁移：\ 跨任务族迁移并带\ 来零样本增益], 3),
+      ((8.0, 1.3), (11.0, 2.75), "M3 远期 2028–30", [L4 递增收益迹象：\ 改进速率随代数上\ 升（配对受控）], 4),
+      ((11.65, 1.3), (14.65, 2.75), "M4 判据 2029–31", [L5 判据与标准：\ 社区协议与独立复\ 现、首个 L5 声明], 5),
     )
     for (pa, pb, title, body, li) in ms {
       rect(pa, pb, radius: 0.1, fill: white, stroke: 0.8pt + accent2, name: title)
       content(((pa.at(0) + pb.at(0)) / 2, pb.at(1) - 0.24), text(size: 7pt, weight: "bold", fill: accent2.darken(10%))[#title])
       content(((pa.at(0) + pb.at(0)) / 2, pa.at(1) + 0.48), text(size: 6.8pt)[#body])
-      line(((pa.at(0) + pb.at(0)) / 2, pb.at(1)), (0.5 + li * 2.42 + 1.11, y0), stroke: (dash: "dashed", paint: accent2, thickness: 0.7pt), mark: (end: ">"))
     }
-    line((3.7, 2.15), (4.35, 2.15), mark: (end: ">"), stroke: 0.9pt + accent2)
-    line((7.35, 2.15), (8.0, 2.15), mark: (end: ">"), stroke: 0.9pt + accent2)
-    line((11.0, 2.15), (11.65, 2.15), mark: (end: ">"), stroke: 0.9pt + accent2)
+    line((3.7, 2.0), (4.35, 2.0), mark: (end: ">"), stroke: 0.9pt + accent2)
+    line((7.35, 2.0), (8.0, 2.0), mark: (end: ">"), stroke: 0.9pt + accent2)
+    line((11.0, 2.0), (11.65, 2.0), mark: (end: ">"), stroke: 0.9pt + accent2)
     // ---- 下排：时间轴 ----
-    line((0.5, 0.7), (14.6, 0.7), mark: (end: ">"), stroke: 0.9pt + ink)
+    line((0.5, 0.55), (14.6, 0.55), mark: (end: ">"), stroke: 0.9pt + ink)
     for i in range(6) {
       let x = 0.9 + i * 2.72
-      line((x, 0.6), (x, 0.8), stroke: 0.7pt + ink)
-      content((x, 0.35), text(size: 7.5pt)[#str(2026 + i)])
+      line((x, 0.45), (x, 0.65), stroke: 0.7pt + ink)
+      content((x, 0.2), text(size: 7.5pt)[#str(2026 + i)])
     }
-    line((3.4, 1.42), (3.4, 0.8), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
-    line((6.9, 1.42), (6.9, 0.8), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
-    line((9.9, 1.42), (9.9, 0.8), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
-    line((12.9, 1.42), (12.9, 0.8), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
+    line((3.4, 1.27), (3.4, 0.65), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
+    line((6.9, 1.27), (6.9, 0.65), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
+    line((9.9, 1.27), (9.9, 0.65), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
+    line((12.9, 1.27), (12.9, 0.65), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
   }),
-  caption: [Physical RSI L0–L5 五年路线图（本书绘制）。上排为分级刻度（L0/L1 已有实证）；中排为里程碑 M1–M4，虚线箭头为支撑的级别，实线箭头为依赖。细则见 @tab:milestones。],
+  caption: [Physical RSI L0–L5 五年路线图（本书绘制）。上排为分级刻度（L0/L1 已有实证）；中排为里程碑 M1–M4，依次对应 L2–L5，实线箭头为里程碑之间的依赖。细则见 @tab:milestones。],
 ) <fig:roadmap>
 
 #figure(

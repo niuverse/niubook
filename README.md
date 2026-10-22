@@ -96,6 +96,14 @@ PDF 是**构建产物**，不是事实源：
 4. 补写 `PROVENANCE.md` 与 `REVIEW.md`（门禁会强制）；
 5. `just catalog && just check-all`。
 
+## 文档
+
+- [书籍契约](docs/BOOK-CONTRACT.md)：一本书必须满足的文件、元数据与门禁。
+- [写作规范](docs/AUTHORING.md)：章节、数学、定理、引用与风格。
+- [图形规范](docs/FIGURES.md)：CeTZ 画布、盒子、箭头、标签与验收清单。
+- [生产流程](docs/PRODUCTION.md)：从简报、并行写作到审校与发布。
+- [许可调研](docs/LICENSING.md)：AI 生成内容的版权与许可证选择依据。
+
 ## 许可与 AI 声明
 
 - 书籍内容：**CC BY-NC-SA 4.0**，见 [`LICENSE`](LICENSE)；
