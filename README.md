@@ -35,8 +35,7 @@ toolchain/
   vendor/                CeTZ 0.3.4 + oxifmt 0.2.1（离线构建）
   python/                BibTeX 校验器
 scripts/                 标准库 Python：bootstrap / build / check / catalog / site
-site/book.toml           mdBook 配置
-site/theme/              mdBook 主题（学术极简样式）
+site/book.toml           mdBook 配置（默认主题）
 catalog/books.json       由 book.toml 与源文件生成的机读书目
 docs/                    书籍契约、写作规范、生产流程、许可调研
 dist/                    构建产物（git 忽略）

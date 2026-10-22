@@ -9,7 +9,6 @@ and the 404 page; the PDFs remain the canonical reading format.
 
 from __future__ import annotations
 
-import html
 import shutil
 import subprocess
 import sys
@@ -36,22 +35,12 @@ def mdbook_bin() -> str:
     raise SystemExit("mdbook is not installed; run `just bootstrap`")
 
 
+def cell(value: object) -> str:
+    return " ".join(str(value).split()).replace("|", "\\|")
+
+
 def money(size: int) -> str:
     return f"{size / 1_000_000:.1f} MB"
-
-
-def make_cover(pdf: Path, target: Path) -> bool:
-    if not shutil.which("pdftoppm"):
-        print("warning: pdftoppm not found; skipping cover generation", file=sys.stderr)
-        return False
-    subprocess.run(
-        [
-            "pdftoppm", "-f", "1", "-l", "1", "-r", "150", "-jpeg",
-            "-jpegopt", "quality=90", "-singlefile", str(pdf), str(target.with_suffix("")),
-        ],
-        check=True,
-    )
-    return target.exists()
 
 
 def write_summary(catalog: dict) -> str:
@@ -67,19 +56,16 @@ def render_index(catalog: dict) -> str:
     for book in catalog["books"]:
         stats = book["stats"]
         rows.append(
-            f'<li><a href="books/{book["slug"]}.html">'
-            f'<span class="book-index">{book["order"]:02d}</span>'
-            f'<span class="book-body"><span class="book-title">{html.escape(book["title"])}</span>'
-            f'<span class="book-subtitle">{html.escape(book["subtitle"])}</span></span>'
-            f'<span class="book-meta">{book["edition"]} · {stats["pages"]} 页 · {stats["references"]} 文献</span>'
-            f'</a></li>'
+            f"| {book['order']:02d} | [{cell(book['title'])}](books/{book['slug']}.md) "
+            f"| {cell(book['subtitle'])} | {cell(book['edition'])} "
+            f"| {stats['pages']} | {stats['references']} |"
         )
 
     return f"""# 书目
 
-<ul class="book-list">
+| # | 书名 | 副标题 | 版次 | 页数 | 文献 |
+| --- | --- | --- | --- | ---: | ---: |
 {chr(10).join(rows)}
-</ul>
 
 ---
 
@@ -87,60 +73,41 @@ def render_index(catalog: dict) -> str:
 """
 
 
-def render_book(book: dict, pdf_bytes: int, has_cover: bool) -> str:
+def render_book(book: dict, pdf_bytes: int) -> str:
     slug = book["slug"]
     stats = book["stats"]
-    cover = (
-        f'<img class="book-cover" src="{slug}.jpg" alt="《{html.escape(book["title"])}》封面">\n\n'
-        if has_cover
-        else ""
-    )
     toc = "\n".join(
-        f'<li><span class="toc-num">{chapter["number"]:02d}</span>'
-        f'<span>{html.escape(chapter["title"])}</span></li>'
-        for chapter in book["chapters"]
+        f"{chapter['number']}. {chapter['title']}" for chapter in book["chapters"]
     )
     appendix = "\n".join(
-        f'<li><span class="toc-num"></span>'
-        f'<span>附录 {html.escape(entry["number"])}　{html.escape(entry["title"])}</span></li>'
-        for entry in book["appendix"]
+        f"- 附录 {entry['number']}　{entry['title']}" for entry in book["appendix"]
     )
 
     return f"""# {book['title']}
 
-<p class="book-subtitle">{html.escape(book['subtitle'])}</p>
+**{book['subtitle']}**
 
-<p class="book-title-en">{html.escape(book['title_en'])}</p>
+*{book['title_en']}*
 
 [下载 PDF]({slug}.pdf) · [Typst 源码]({REPO_URL}/tree/main/books/{slug}) · [溯源]({REPO_URL}/blob/main/books/{slug}/PROVENANCE.md) · [审校]({REPO_URL}/blob/main/books/{slug}/REVIEW.md)
 
-<dl class="book-meta-list">
-<div><dt>作者</dt><dd>{html.escape(book['author'])}</dd></div>
-<div><dt>版次</dt><dd>{html.escape(book['edition'])}</dd></div>
-<div><dt>页数</dt><dd>{stats['pages']}</dd></div>
-<div><dt>文献</dt><dd>{stats['references']}</dd></div>
-<div><dt>许可</dt><dd>{html.escape(book['license']['spdx'])}</dd></div>
-</dl>
+| 作者 | 版次 | 页数 | 文献 | 许可 |
+| --- | --- | ---: | ---: | --- |
+| {cell(book['author'])} | {cell(book['edition'])} | {stats['pages']} | {stats['references']} | {cell(book['license']['spdx'])} |
 
-{cover}## 摘要
+## 摘要
 
 {book['abstract']}
 
 ## 目录
 
-<ol class="book-toc">
 {toc}
-</ol>
 
-<ul class="book-appendix">
 {appendix}
-</ul>
 
 ## 阅读
 
-<p class="pdf-actions"><a class="pdf-open" href="{slug}.pdf" target="_blank" rel="noopener">打开 PDF</a><span class="pdf-size">{stats['pages']} 页 · {money(pdf_bytes)}</span></p>
-
-也可以[下载到本地]({slug}.pdf)。
+[打开 PDF]({slug}.pdf) · {stats['pages']} 页 · {money(pdf_bytes)}
 
 ## 版本与溯源
 
@@ -161,7 +128,6 @@ def main() -> int:
         shutil.rmtree(DIST)
     (SRC / "src").mkdir(parents=True)
     shutil.copy2(SITE / "book.toml", SRC / "book.toml")
-    shutil.copytree(SITE / "theme", SRC / "theme")
 
     (SRC / "src" / "SUMMARY.md").write_text(write_summary(catalog), encoding="utf-8")
     (SRC / "src" / "index.md").write_text(render_index(catalog), encoding="utf-8")
@@ -175,11 +141,10 @@ def main() -> int:
         out = SRC / "src" / "books"
         out.mkdir(parents=True, exist_ok=True)
         shutil.copy2(pdf, out / f"{slug}.pdf")
-        cover = make_cover(pdf, out / f"{slug}.jpg")
         (out / f"{slug}.md").write_text(
-            render_book(book, pdf.stat().st_size, cover), encoding="utf-8"
+            render_book(book, pdf.stat().st_size), encoding="utf-8"
         )
-        print(f"  mdbook · /books/{slug}/ ({money(pdf.stat().st_size)})")
+        print(f"  mdbook · /books/{slug}.html ({money(pdf.stat().st_size)})")
 
     subprocess.run(
         [mdbook, "build", str(SRC), "-d", str(DIST)],

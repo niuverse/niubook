@@ -54,7 +54,7 @@ just site          # 生成 dist/site
 | 图的布局与箭头 | 对应章节的 `cetz.canvas`；先读 `docs/FIGURES.md` |
 | 参考文献 | `books/<slug>/references.bib` + `bibkeys.txt` |
 | 门禁规则 | `scripts/check.py` |
-| 站点版式 | `site/theme/niubook.css`、`site/book.toml`；页面内容由 `scripts/site.py` 生成 |
+| 站点版式 | `site/book.toml`（mdBook 默认主题）；页面内容由 `scripts/site.py` 生成 |
 | 发布流程 | `.github/workflows/pages.yml` |
 
 ## 新增一本书
