@@ -78,7 +78,7 @@ SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 二、商业使用
 任何以商业优势或金钱报酬为主要目的或指向的使用，均不在 CC BY-NC-SA 4.0 授权范围内，包括但不限于：销售本书的纸质版或电子版；将本书用于付费课程、商业培训、付费数据库或订阅服务。上述使用须事先取得著作权人的书面商业授权。
-联系：[商业授权联系邮箱] / https://github.com/niuverse/niubook/issues
+联系：https://github.com/niuverse/niubook/issues
 
 三、AI 生成内容
 本书部分初稿由 Moonshot AI 的 Kimi K3 生成；人类作者完成了选题、大纲设计、多轮编辑、引用核验与统稿。依《Kimi 用户服务协议》第 5.2 条（本书生成时适用的版本见 PROVENANCE.md），用户在法律允许的范围内拥有输入与输出内容的知识产权；但依中国、美国、欧盟现行规则，完全由 AI 生成、缺乏人类实质性智力投入的部分可能不受著作权保护。
@@ -301,7 +301,7 @@ The Work is provided "as is", without warranties of any kind, express or implied
 
 1. **加 `LICENSE`**：CC BY-NC-SA 4.0 官方英文法律文本，不改写。
 2. **加 `LICENSE-CODE`**：MIT 文本；`scripts/`、`toolchain/`、Typst 模板代码适用。
-3. **加 `NOTICE`**：用上面的中英文模板；把 `[商业授权联系邮箱]` 换成真实邮箱。
+3. **加 `NOTICE`**：用上面的中英文模板；商业授权联系入口统一使用仓库 Issues。
 4. **改 `README.md`**：加中英一句话声明 + 链接到 `LICENSE` / `NOTICE`。
 5. **加 SPDX 头**：章节 `.typ` 用 `CC-BY-NC-SA-4.0`；Python/脚本用 `MIT`。
 6. **写 `PROVENANCE.md`**：模型名/版本、生成日期、关键 prompt 或 prompt 摘要、章节生成顺序、人工编辑与引用核验记录、哪些章节含 AI 生成内容。仓库 `book.toml` 已有 `generator = "Kimi K3"`，把它展开成可审计的记录。
