@@ -30,6 +30,9 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--serif);
@@ -38,6 +41,8 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+main { flex: 1 0 auto; }
 
 ::selection { background: var(--accent); color: var(--paper); }
 
@@ -112,9 +117,7 @@ code {
 }
 .masthead nav a:hover { color: var(--ink); border-color: var(--accent); }
 
-/* -------------------------------------------------------------- hero */
-.hero { padding: clamp(72px, 13vh, 156px) 0 clamp(64px, 10vh, 118px); }
-
+/* ------------------------------------------------------------ eyebrow */
 .eyebrow {
   font-family: var(--sans);
   font-size: 11px;
@@ -124,24 +127,8 @@ code {
   margin: 0 0 30px;
 }
 
-.hero h1 {
-  margin: 0 0 30px;
-  font-size: clamp(44px, 6.6vw, 86px);
-  font-weight: 500;
-  line-height: 1.06;
-  letter-spacing: -0.025em;
-}
-
-.lede {
-  max-width: 34em;
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(17px, 1.5vw, 20px);
-  line-height: 1.9;
-}
-
 /* --------------------------------------------------------- catalogue */
-.catalogue { padding: 72px 0 24px; }
+.catalogue { padding: 56px 0 104px; }
 
 .section-head {
   display: flex;
@@ -152,13 +139,12 @@ code {
   border-bottom: 1px solid var(--ink);
 }
 
-.section-head h2 {
+.section-head h1 {
   margin: 0;
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .count {
@@ -218,43 +204,6 @@ code {
 
 .book-row:hover .row-title { color: var(--accent); }
 .book-row:hover .row-arrow { transform: translateX(4px); }
-
-/* -------------------------------------------------------------- about */
-.about { padding: 72px 0 110px; }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.45fr 1fr;
-  gap: 72px;
-  padding-top: 32px;
-}
-
-.about-grid > p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.95;
-  max-width: 40em;
-}
-
-.about .facts { display: block; margin: 0; }
-
-.about .facts dt {
-  font-family: var(--sans);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-top: 1px solid var(--rule);
-  padding-top: 12px;
-}
-
-.about .facts dd {
-  margin: 3px 0 0;
-  padding-bottom: 13px;
-  border-bottom: 1px solid var(--rule);
-  font-size: 15px;
-  line-height: 1.6;
-}
 
 /* --------------------------------------------------------- book page */
 .crumbs {
@@ -462,7 +411,7 @@ code {
 }
 
 .reader-placeholder {
-  min-height: 300px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -534,13 +483,6 @@ footer {
 .footer-inner a { color: var(--muted); text-decoration: none; }
 .footer-inner a:hover { color: var(--ink); }
 
-.ai-note {
-  max-width: 62em;
-  margin: 18px 0 0;
-  line-height: 1.8;
-  color: var(--muted);
-}
-
 /* --------------------------------------------------------------- 404 */
 .notfound { padding: 18vh 0 24vh; }
 .notfound h1 {
@@ -555,7 +497,6 @@ footer {
 @media (max-width: 900px) {
   .wrap { width: calc(100% - 48px); }
   .book-overview { grid-template-columns: 220px 1fr; gap: 44px; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 
 @media (max-width: 680px) {
@@ -563,8 +504,6 @@ footer {
   .wrap { width: calc(100% - 40px); }
   .masthead { padding-top: 24px; }
   .masthead nav { gap: 18px; }
-  .hero { padding: 56px 0 72px; }
-  .hero h1 { font-size: clamp(38px, 10.5vw, 52px); }
   .book-row {
     grid-template-columns: 36px 1fr 22px;
     grid-template-areas:

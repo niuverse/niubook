@@ -81,8 +81,7 @@ def page(
 <header class="masthead wrap">
   <a class="wordmark" href="{root}/">NIUBOOK</a>
   <nav aria-label="主导航">
-    <a href="{root}/#books">书目</a>
-    <a href="{root}/#about">关于</a>
+    <a href="{root}/">书目</a>
     <a href="{REPO_URL}" rel="noopener">GitHub</a>
   </nav>
 </header>
@@ -90,10 +89,10 @@ def page(
 <footer class="wrap">
   <div class="footer-inner">
     <span>Niubook · 2026</span>
+    <span>AI 生成 · 人工统稿</span>
     <span>内容 CC BY-NC-SA 4.0 · 代码 MIT</span>
     <a href="{REPO_URL}/blob/main/NOTICE" rel="noopener">权利声明</a>
   </div>
-  <p class="ai-note">本站书籍含 AI 生成内容：初稿由 Kimi K3 生成，人类作者完成选题、大纲、编辑、引用核验与统稿。</p>
 </footer>
 </body>
 </html>
@@ -123,44 +122,21 @@ def render_index(catalog: dict) -> str:
       </li>"""
         )
 
-    body = f"""<main id="main">
-  <section class="hero wrap">
-    <p class="eyebrow">Niubook · 书库 · 2026</p>
-    <h1>由 AI 撰写，<br>以书的标准交付。</h1>
-    <p class="lede">Niubook 是一个 AI 生成书稿的合集。每本书都以 Typst 源码维护，
-      经人工统稿与引用核验，可复现地编译为 PDF。</p>
-  </section>
-
-  <section class="catalogue wrap" id="books">
+    body = f"""<main id="main" class="wrap">
+  <section class="catalogue" id="books">
     <div class="section-head">
-      <h2>书目</h2>
+      <h1>书目</h1>
       <span class="count">{len(books):02d} / {len(books):02d}</span>
     </div>
     <ol class="book-list">
 {chr(10).join(rows)}
     </ol>
   </section>
-
-  <section class="about wrap" id="about">
-    <div class="section-head"><h2>关于</h2></div>
-    <div class="about-grid">
-      <p>每本书都是一个可编译的仓库对象：<code>book.toml</code> 定义元数据与许可，
-        Typst 源码生成 PDF，检查门禁验证结构、引用、分页基线与溯源记录。
-        生成过程、人工改动与已知问题，分别写在每本书的
-        <code>PROVENANCE.md</code> 与 <code>REVIEW.md</code> 中。</p>
-      <dl class="facts">
-        <dt>排版</dt><dd>Typst 0.13.1 → PDF</dd>
-        <dt>门禁</dt><dd>结构 · 引用 · 构建 · 溯源</dd>
-        <dt>许可</dt><dd>内容 CC BY-NC-SA 4.0<br>代码 MIT</dd>
-        <dt>源码</dt><dd><a href="{REPO_URL}" rel="noopener">github.com/niuverse/niubook</a></dd>
-      </dl>
-    </div>
-  </section>
 </main>"""
 
     return page(
-        title="Niubook — AI 生成的书库",
-        description="Niubook 是一个 AI 生成书稿的合集：每本书以 Typst 源码维护，经人工统稿与引用核验，可复现地编译为 PDF。",
+        title="Niubook — 书目",
+        description="Niubook 书库：AI 生成书稿，Typst 源码，PDF 下载。",
         body=body,
         root=".",
         canonical=f"{BASE_URL}/",
@@ -222,7 +198,7 @@ def render_book(book: dict, pdf_bytes: int, has_cover: bool) -> str:
 
     body = f"""<main id="main" class="wrap">
   <nav class="crumbs" aria-label="面包屑">
-    <a href="{root}/">书库</a><span aria-hidden="true">/</span><span>{book['order']:02d}</span>
+    <a href="{root}/">书目</a><span aria-hidden="true">/</span><span>{book['order']:02d}</span>
   </nav>
 
   <header class="book-header">
@@ -266,16 +242,13 @@ def render_book(book: dict, pdf_bytes: int, has_cover: bool) -> str:
           <button class="btn primary" type="button" data-reader>在页面内阅读</button>
           <a class="btn" href="{slug}.pdf" target="_blank" rel="noopener">新标签页打开</a>
         </div>
-        <p class="reader-hint">内嵌阅读器使用浏览器自带的 PDF 视图，文字可选中、可检索。</p>
       </div>
     </div>
   </section>
 
   <section class="provenance">
-    <h2 class="label">生成与审校</h2>
-    <p>初稿由 <strong>{esc(book['provenance']['generator'])}</strong> 生成；人类作者完成选题、大纲设计、
-      多轮编辑、引用核验与统稿。本书仍有 {stats['unverified']} 条文献标注为待核实，
-      已知问题记录在审校台账中。</p>
+    <h2 class="label">版本与溯源</h2>
+    <p>初稿 {esc(book['provenance']['generator'])} · 人工统稿 · {stats['unverified']} 条文献待核验。</p>
     <ul class="links">
       <li><a href="{REPO_URL}/blob/main/books/{slug}/PROVENANCE.md" rel="noopener">溯源记录</a></li>
       <li><a href="{REPO_URL}/blob/main/books/{slug}/REVIEW.md" rel="noopener">审校台账</a></li>
