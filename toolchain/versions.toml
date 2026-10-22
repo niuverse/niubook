@@ -1,9 +1,9 @@
 [typst]
-version = "0.13.1"
+version = "0.15.1"
 
 [typst.platforms.linux-x86_64]
 url = "https://github.com/typst/typst/releases/download/v{version}/typst-x86_64-unknown-linux-musl.tar.xz"
-sha256 = "7d214bfeffc2e585dc422d1a09d2b144969421281e8c7f5d784b65fc69b5673f"
+sha256 = "a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c"
 archive_root = "typst-x86_64-unknown-linux-musl"
 
 [typst.platforms.linux-aarch64]
@@ -22,11 +22,11 @@ sha256 = ""
 archive_root = "typst-x86_64-apple-darwin"
 
 [mdbook]
-version = "0.5.3"
+version = "0.5.4"
 
 [mdbook.platforms.linux-x86_64]
 url = "https://github.com/rust-lang/mdBook/releases/download/v{version}/mdbook-v{version}-x86_64-unknown-linux-musl.tar.gz"
-sha256 = "dfb86d8e20a3fed91bf549aa450b9d7f46a275b700292e050cdfd3171732e7fd"
+sha256 = "5222beabd3e37dc5be0d18ff99b79058469354db5c220153a1b92db5ba12be89"
 
 [mdbook.platforms.linux-aarch64]
 url = "https://github.com/rust-lang/mdBook/releases/download/v{version}/mdbook-v{version}-aarch64-unknown-linux-musl.tar.gz"

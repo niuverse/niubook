@@ -33,7 +33,7 @@ short_title = "具身递归自我改进"   # 页眉用
 language = "zh-CN"
 year = 2026
 edition = "2026.10"           # 内容版次
-version = "1.0.1"             # 语义化版本
+version = "1.0.3"             # 语义化版本
 status = "stable"             # draft | review | stable | archived
 audience = "..."
 knowledge_cutoff = "2026-10"
@@ -43,7 +43,7 @@ abstract = "..."              # 站点与 catalog 使用
 
 [build]
 engine = "typst"
-typst = "0.13.1"
+typst = "0.15.1"
 main = "main.typ"
 
 [stats]                       # 与源文件核对；pages 是分页基线
@@ -95,7 +95,7 @@ pipeline = "..."
 
 文本指纹用于判断"内容是否被意外改动"：版式重构不应改变 `pdftotext -layout`
 的输出哈希。第 1 本书的基线是
-`b8ff45df38cef8911749f35a2551b5569478a7e16b27f1036f239da3932f9130`（v1.0.1）。
+`1d405be207e309dbf6aeaf8f7387d9d957a72f26259e2f3b3dba1d47100a3de3`（v1.0.3）。
 
 ## 5. 门禁
 

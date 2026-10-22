@@ -12,7 +12,7 @@ short_title = "具身递归自我改进"
 language = "zh-CN"
 year = 2026
 edition = "2026.10"
-version = "1.0.2"
+version = "1.0.3"
 status = "stable"
 audience = "面向机器人与人工智能方向的研究生与研究人员"
 knowledge_cutoff = "2026-10"
@@ -23,7 +23,7 @@ cover_note = "学术讲义 · 2026"
 
 [build]
 engine = "typst"
-typst = "0.13.1"
+typst = "0.15.1"
 main = "main.typ"
 
 [stats]

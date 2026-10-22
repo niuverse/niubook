@@ -70,7 +70,7 @@ just site          # 生成 dist/site
 ## 提交与发布
 
 - 提交信息用「范围: 动作」：`book(embodied-rsi): import v1.0.0`、
-  `toolchain: pin typst 0.13.1`、`site: add reader placeholder`。
+  `toolchain: pin typst 0.15.1`、`site: add reader placeholder`。
 - 推送 `main` 后，GitHub Actions 会跑门禁、编译、生成站点并部署 Pages。
 - 发布版本用 tag 标注：`book/embodied-rsi/v1.0.0`。
 - 若 Actions 失败，先看门禁输出；不要用跳过检查的方式"修复"发布。

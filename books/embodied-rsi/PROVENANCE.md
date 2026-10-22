@@ -18,9 +18,9 @@
 导入后的构建基线：
 
 ```text
-Typst 0.13.1 + cetz 0.3.4（vendored）
+Typst 0.15.1 + cetz 0.3.4（vendored）
 106 页 A4 · 0 警告 · 0 未解析引用 · 编译约 4 秒
-pdftotext -layout | sha256 = b8ff45df38cef8911749f35a2551b5569478a7e16b27f1036f239da3932f9130
+pdftotext -layout | sha256 = 1d405be207e309dbf6aeaf8f7387d9d957a72f26259e2f3b3dba1d47100a3de3
 ```
 
 该指纹用于回归：正文或版式若发生非预期变化，`just check` 之外还应比对这一指纹。

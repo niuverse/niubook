@@ -14,7 +14,7 @@ AI 生成书稿的合集。每本书以 Typst 源码维护，经人工统稿与�
 ## 快速开始
 
 ```sh
-just bootstrap     # 下载并校验 Typst 0.13.1 与 mdBook 0.5.3
+just bootstrap     # 下载并校验 Typst 0.15.1 与 mdBook 0.5.4
 just doctor        # 检查字体、CeTZ 与 poppler
 just build         # 编译第 1 本书 → dist/books/embodied-rsi/*.pdf
 just check         # 质量门禁：元数据 / 结构 / 构建 / 引用 / 卫生 / 溯源
