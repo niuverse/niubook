@@ -5,3 +5,8 @@
 // ============================================================
 
 #import "../../toolchain/typst/base.typ": *
+
+// HTML 导出时把 CeTZ 画布转成内联 SVG；PDF 路径原样返回。
+#let diagram(body) = context {
+  if target() == "html" { html.frame(body) } else { body }
+}

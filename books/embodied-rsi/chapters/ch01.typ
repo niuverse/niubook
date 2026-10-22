@@ -26,7 +26,7 @@
 #definition(title: [Agent])[记为 $cal(A)_"llm" = (cal(H), Theta)$，即 *agent = model + harness*。这与评估实践中区分「模型分数」与「智能体分数」的用法一致——同一模型换一副 harness，在同一基准上可相差数十个百分点；能力声明属于「模型 + 脚手架」整体而非模型本身。]
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let boxstyle = (radius: 0.12, fill: softbg, stroke: 0.9pt + accent)
     // ---- 改进程序 Phi ----
@@ -67,7 +67,7 @@
     content((9.85, 4.98), text(size: 7.5pt)[证据])
     line((11.7, 6.05), (8.6, 8.0), mark: (end: ">"), stroke: (dash: "dashed", paint: accent2, thickness: 0.8pt))
     content((11.2, 6.6), text(size: 7.5pt, fill: accent2.darken(10%))[放行 / 否决])
-  }),
+  })),
   caption: [Harness 与 Agent / Model / Environment 的分层关系。Harness $cal(H)$ 是模型 $Theta$ 与环境之间的接线总和，与 $Theta$ 共同构成 Agent；改进程序 $Phi$ 作用于 $(cal(H), Theta)$ 整体，而独立评估器 $E$ 在系统之外把关「什么算改进」（四元组形式化见 @sec:formulation）。],
 ) <fig:harness-layers>
 
@@ -127,7 +127,7 @@ $ "PRSI" := (cal(H), Theta, Phi, E), $ <eq:prsi>
 四元组回答了「系统由什么构成」，但还没有回答「每一轮改进实际流过哪些环节」。【本书提出】把一轮完整的 Embodied RSI 分解为九个环节：
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let r = 4.6
     let w = 2.2
@@ -171,7 +171,7 @@ $ "PRSI" := (cal(H), Theta, Phi, E), $ <eq:prsi>
     content((5.95, 4.35), text(size: 7.5pt, fill: accent)[• 做什么：提议与试验])
     content((-6.2, -0.2), text(size: 7.5pt, fill: accent2)[• 学到什么：诊断与归因])
     content((5.95, -4.55), text(size: 7.5pt, fill: gray.darken(25%))[• 留下什么：修改与固化])
-  }),
+  })),
   caption: [Embodied RSI 九环节闭环总览（本书提出）。⑨ 回流①，构成递归的外层循环；三个语义分组对应「做什么 / 学到什么 / 留下什么」。],
 ) <fig:loop9>
 

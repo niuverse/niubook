@@ -52,7 +52,7 @@ $ sigma = ("name", "desc", "code", (phi_"pre", phi_"post")), $ <eq:ch6-skill>
 技能库不是仓库而是生态系统。【本书提出】我们用五阶段生命周期刻画其运转（@fig:ch6-skill）：技能由课程机制或失败分析*提出*，经沙箱执行与自我验证*检验*后*入库*，在后续任务中被检索*复用*并参与组合，长期未用或被替代者进入*淘汰*，空缺反过来为课程提供新方向。"淘汰"几乎未被文献处理；本书推断其判据至少含三条：使用频率、相对替代品的验证集优势、与当前底层模型的兼容性——第三条在模型升级时尤为关键，旧技能可能是围绕旧模型偏置调优的产物。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let boxstyle = (radius: 0.12, stroke: 0.8pt + accent, fill: softbg)
     let arw = (mark: (end: ">"), stroke: 0.9pt + accent)
@@ -84,7 +84,7 @@ $ sigma = ("name", "desc", "code", (phi_"pre", phi_"post")), $ <eq:ch6-skill>
     content((-2.05, -1.0), text(size: 6.5pt, fill: accent2)[读出])
     line((-1.5, -0.1), (-3.1, 0.7), mark: (end: ">"), stroke: (paint: gray, dash: "dashed", thickness: 0.7pt))
     content((-2.55, 0.15), text(size: 6.5pt, fill: gray)[移除])
-  }),
+  })),
   caption: [技能库生命周期（本书提出）：提出→验证→入库→复用→淘汰，淘汰产生的空缺反馈给课程机制；验证环节是防止污染的唯一闸门。],
 ) <fig:ch6-skill>
 

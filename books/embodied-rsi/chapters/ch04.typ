@@ -24,7 +24,7 @@ $ cal(A)_0 tack.r u(p') > u(p), $ <eq:godel-rewrite>
 且右边包含继续运行当前 $p$ 的全部后果（含证明搜索与重写代价）。证明一旦找到，系统立即执行*全局重写* $p arrow.l p'$：策略乃至证明搜索器自身都被替换——递归性正系于此。决策环见 @fig:godel-loop。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let node(pos, w, h, body, fill: softbg, sc: accent) = {
       let (x, y) = pos
@@ -45,7 +45,7 @@ $ cal(A)_0 tack.r u(p') > u(p), $ <eq:godel-rewrite>
     line((12.6, 0.1), (13.5, 0.1), (13.5, 2.7), (12.6, 2.7), mark: (end: ">"), stroke: 0.7pt + gray.darken(20%))
     content((13.5, 3.0), anchor: "south", text(size: 7.5pt)[否：继续搜索（消耗预算）])
     content((6.5, -1.05), text(size: 7.5pt, fill: gray.darken(20%))[公理系统 $cal(A)_0$ 全程硬编码、不可修改])
-  }),
+  })),
   caption: [Gödel machine 决策环：策略执行与证明搜索并行；唯严格证明触发全局重写],
 ) <fig:godel-loop>
 

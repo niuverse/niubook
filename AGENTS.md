@@ -16,7 +16,7 @@ Typst 源码 + `book.toml` + 溯源与审校台账。构建、门禁与站点都
 ## 常用命令
 
 ```sh
-just bootstrap     # 安装固定版本 Typst 与 mdBook
+just bootstrap     # 安装固定版本 Typst
 just doctor        # 字体 / 依赖 / vendor 检查
 just build <slug>  # 编译一本（默认 embodied-rsi）
 just check <slug>  # 单本门禁
@@ -54,7 +54,7 @@ just site          # 生成 dist/site
 | 图的布局与箭头 | 对应章节的 `cetz.canvas`；先读 `docs/FIGURES.md` |
 | 参考文献 | `books/<slug>/references.bib` + `bibkeys.txt` |
 | 门禁规则 | `scripts/check.py` |
-| 站点版式 | `site/book.toml`（mdBook 默认主题）；页面内容由 `scripts/site.py` 生成 |
+| 站点版式 | `site/style.css`、`site/lib.typ`；页面由 `site/build.typ` 经 Typst bundle 生成 |
 | 发布流程 | `.github/workflows/pages.yml` |
 
 ## 新增一本书

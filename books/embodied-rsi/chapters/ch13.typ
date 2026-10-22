@@ -16,7 +16,7 @@
 *三代系统。* 第一代（2022，L-P）确立了"语言模型可以接地到机器人"——SayCan 用"有用度×可供性"相乘选技能 @ahn2022saycan，CaP/VoxPoser 让 LLM 生成策略代码与三维价值图 @liang2023cap @huang2023voxposer——但每条指令开环：执行成败不回流为任何持久更新。第二代（2023–2024，L-C）自动化闭环单段组件：Eureka/DrEureka 的奖励与 DR 进化 @ma2024eureka @ma2024dreureka（§13.2 详析）、RoboGen/GenSim 的任务—场景—监督生成 @wang2024robogen @wang2024gensim、AutoRT 编排 20 余台机器人收集 7.7 万条真实 episode @ahn2024autort、RoboCat 首次演示权重级自我改进 @bousmalis2023robocat；游戏域 Voyager 的"自动课程+技能库+自我验证"是 L-E 设计的概念原型 @wang2023voyager。第三代（2025–2026，L-E）中 agent 指导改进过程本身：ENPIRE 直接修订训练代码 @xiao2026enpire，RHO/HARBOR 把 harness 变为优化对象 @elmaaroufi2026rho @li2026harbor。Agentic Robotics 综述给出独立佐证：*17 例 agent 主导的改进（相当于 L-E）中 16 例出现在 2026 年* @wang2026agenticrobotics。谱系见 @fig:timeline13。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let acc = rgb("#0f5c5c")
     let acc2 = rgb("#8c5a2b")
@@ -55,7 +55,7 @@
     // 2026 下半年标签集中在一行，避免与散点争空间
     content((7.6, -0.55), text(size: 7pt, fill: gray.darken(25%))[2026 H2：RISE · ASPIRE · RSIGym · EmbodiedRSI · SEAR/EmbodiedEvo · ENPIRE/RHO/HARBOR])
     content((7.5, 7.25), text(size: 8pt, fill: gray.darken(30%))[2022 → 2026.10：LLM 在具身闭环中的角色从规划器（棕）经组件设计者（青）迁移到实验者（红）])
-  }),
+  })),
   caption: [系统谱系时间线（2022 → 2026.10）。纵轴为三级角色；L-E 泳道在 2026 年下半年急剧加密，与综述的统计吻合 @wang2026agenticrobotics。],
 ) <fig:timeline13>
 

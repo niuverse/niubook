@@ -44,7 +44,7 @@ $ h_(t+1)", " a_t &= "Loop"(M, C_t, T, P) \
 第一，#strong[趋同]。所有对象收敛到同一工件形态——本书称之为#strong[七件套]：loop（主循环）、tools（工具分发）、skills（技能库）、sub-agents（子代理）、hooks（事件钩子）、MCP（对外协议）、sessions（会话持久化）（@fig:seven-piece）。趋同是可追踪的模仿（Codex 逐字采用 Claude Code 的 hook 事件词汇），功能差异化的半衰期"以周计"——耐久的是结构型论断而非功能清单。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     // 外框：Harness
     rect((0.2, 0.0), (13.8, 7.0), radius: 0.2, fill: bluebg, stroke: 1pt + softline)
@@ -82,7 +82,7 @@ $ h_(t+1)", " a_t &= "Loop"(M, C_t, T, P) \
     content((9.0, -0.9), text(size: 8pt)[环境 Env（返回 $o_t, r_t$）])
     line((9.0, 0.35), (9.0, -0.45), mark: (start: ">", end: ">"), stroke: 0.7pt + accent2)
     content((10.9, -0.08), text(size: 6.5pt, fill: accent2)[动作 $a_t$ / 观测 $o_t$])
-  }),
+  })),
   caption: [生产级 agent harness 的七件套解剖图（据 @harnessengineering2026 综合绘制）。沙箱是 harness 与环境之间的唯一受控通道。],
 ) <fig:seven-piece>
 

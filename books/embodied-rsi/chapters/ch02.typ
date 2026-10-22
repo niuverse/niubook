@@ -121,7 +121,7 @@ $ min_(u_(0:H-1)) sum_(k=0)^(H-1) c(x_k, u_k) + c_f (x_H) quad upright("s.t.") q
 @fig:ch02-spectrum 把本章方法排在"模型可知性—求解方式"谱系上：左端全知模型在线重规划，右端无模型摊销策略，中间是学模型再规划的混合路线。这是精确的连续谱：MPC 可视为"在线版一步策略迭代"；model-based 与 model-free 共享同一套 Bellman 备份，差别只在数据来自环境还是学到的模型 @yang2026rise。【本书推断】RSI 在"改进速度 vs. 可保证性"间的权衡正是谱系上的选址：高风险修改走 MPC 侧（可验证、可回滚），低风险更新走摊销 RL 侧。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let boxstyle = (radius: 0.12, stroke: (paint: rgb("#0f5c5c"), thickness: 0.9pt), fill: rgb("#eef3f5"))
     // 轴线
@@ -140,7 +140,7 @@ $ min_(u_(0:H-1)) sum_(k=0)^(H-1) c(x_k, u_k) + c_f (x_H) quad upright("s.t.") q
     node(2.8, -1.15, [TD / Q-learning], [无模型 · 自举估值])
     node(5.6, 1.1, [PG / TRPO / PPO], [无模型 · 直接改进 $pi_theta$])
     content((0, 2.05), text(size: 7.5pt, fill: rgb("#8c5a2b"))[规划深度 ＋ 模型依赖 递减，部署计算量递减])
-  }),
+  })),
   caption: [控制 / 规划 / 强化学习方法谱系：从"全知模型、在线重规划"到"无模型、摊销策略"。],
 ) <fig:ch02-spectrum>
 

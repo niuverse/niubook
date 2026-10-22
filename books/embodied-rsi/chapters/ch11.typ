@@ -14,7 +14,7 @@ Physical RSI 的形式化 @zhou2026physicalrsi 把系统拆为任务执行系统
 仿真选型受三元权衡支配：*吞吐*（每秒环境步数）、*保真度*（接触/渲染/传感与真实的偏差）、*成本*（算力、许可证与工程人力），三者不能同时取极值。两次突破改变了三角的形状：Brax 把刚体动力学用 JAX 重写并与训练算法同设备编译 @freeman2021brax；Isaac Gym 把端到端驻留 GPU 的 RL 推到约 54 万步/秒（4096 环境、单张 A100）@makoviychuk2021isaacgym；MuJoCo Playground 在单 GPU 上报告含渲染的 CartPole 约 40.3 万步/秒 @mujoco_playground2025——吞吐顶点已高到多数研究问题不再受其约束。成本校准（本书推断）：一条仿真 episode 在 MJX 级引擎约 $10^(-4)$ 美元量级，含渲染的高保真栈约 $10^(-2)$ 美元量级，真实 episode 普遍在 1–10 美元量级，各差约两个数量级——编排器的目标因此天然是"单位真机成本的信息量"。当吞吐不再是瓶颈，闭环约束上移到任务/监督合成 @wang2024robogen @hua2024gensim2 与真实验证吞吐两处：*仿真从 RSI 的成本中心转变为假设消化器*，设计目标从"快"转向"可编程、可审计、可回流"（@fig:stack）。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let layer = (radius: 0.12, stroke: 0.8pt + accent, fill: softbg)
     let layer2 = (radius: 0.12, stroke: 0.8pt + accent2, fill: bluebg)
@@ -50,7 +50,7 @@ Physical RSI 的形式化 @zhou2026physicalrsi 把系统拆为任务执行系统
     // 真机回流
     line("real.north", (12.9, 6.3), "l4.east", mark: (end: ">"), stroke: (dash: "dashed", paint: gray.darken(30%), thickness: 0.7pt))
     content((13.05, 3.9), anchor: "west", text(size: 7pt, fill: gray.darken(30%))[真实证据\ 回流 $E$])
-  }),
+  })),
   caption: [仿真栈分层图（本书提出）：实线为假设与配置流，虚线为证据流；真实世界悬于栈外，其验证吞吐是闭环的最终瓶颈。],
 ) <fig:stack>
 
@@ -79,7 +79,7 @@ $ hat(xi) = argmin_(xi in Xi) EE_((s_t, a_t, s_(t+1)) ~ cal(D)_"real") [ norm( s
 可微引擎使 @eq:sysid 可用梯度法求解，但接触参数可辨识性有限。两条路线合流为三个可复用组件：(i) *DR 为主、sysID 圈界*；(ii) *在线自适应*——RMA 把"辨识"移入部署时 @kumar2021rma；(iii) *real-to-sim-to-real*——真实场景重建加少量真实微调 @torne2024rialto。更进一步，DrEureka 把奖励函数与 DR 分布同时交给 LLM 进化式搜索，无需人工调参即完成新任务迁移 @ma2024dreureka @ma2024eureka。本书把这一演进概括为 sim-to-real 的闭环化（@fig:sim2real）：真实侧失败经系统辨识与分布更新回流到仿真配置，唯一未自动化的环节是"失败归因到仿真参数"的映射（本书推断为最待自动化的子问题）。DR 分布与第 7 章的课程分布在数学上同族——前者扩大支撑集以覆盖 $xi^*$，后者选择遗憾最大的参数 @dennis2020paired @jiang2021plr；本书提出在 RSI 闭环中把两者统一为同一演化对象，按"课程提议、DR 否决"合成最终采样分布。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let b = (radius: 0.12, stroke: 0.8pt + accent, fill: softbg)
     let b2 = (radius: 0.12, stroke: 0.8pt + accent2, fill: bluebg)
@@ -111,7 +111,7 @@ $ hat(xi) = argmin_(xi in Xi) EE_((s_t, a_t, s_(t+1)) ~ cal(D)_"real") [ norm( s
     rect((13.2, 3.6), (14.8, 4.9), radius: 0.12, stroke: (dash: "dashed", paint: gray.darken(30%), thickness: 0.7pt), fill: softbg, name: "rma")
     content("rma", text(size: 7.5pt)[在线自适应\ （RMA 式）])
     line("deploy.east", "rma.west", mark: (end: ">"), stroke: (dash: "dashed", paint: gray.darken(30%), thickness: 0.7pt))
-  }),
+  })),
   caption: [sim-to-real 闭环（本书综合）：实线环为已工程化的主回路；赭色虚线为尚未自动化的失败归因环节；灰色虚线框为在线自适应旁路 @kumar2021rma。],
 ) <fig:sim2real>
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download and verify the pinned Typst and mdBook binaries into .tools/.
+"""Download and verify the pinned Typst binary into .tools/.
 
 Versions and checksums live in toolchain/versions.toml. Builds never
 download Typst packages: CeTZ and friends are vendored under toolchain/vendor.
@@ -20,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSIONS = ROOT / "toolchain" / "versions.toml"
-TOOLS = ("typst", "mdbook")
+TOOLS = ("typst",)
 
 
 def load_config() -> dict:

@@ -45,7 +45,7 @@ $ tilde(X)_k = (H_k, Theta_k, Phi_k, M_k, L_k), $ <eq:extended>
 工程推论：*只 checkpoint 权重与配置的系统无法复现自身决策轨迹*，恢复运行必须连同记忆与账本一起快照。L0–L5 由此获得状态空间读法（本书推断）：L1–L2 只更新 $H$ 或 $Theta$，L3–L4 要求跨任务迁移且 $Phi$ 进入可修改范围，L5 对改进序列 ${Delta J_k}$ 本身提出要求。@fig:loop-arch 给出整体架构。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let acc = rgb("#0f5c5c")
     let acc2 = rgb("#8c5a2b")
@@ -90,7 +90,7 @@ $ tilde(X)_k = (H_k, Theta_k, Phi_k, M_k, L_k), $ <eq:extended>
     // 角注
     content((1.1, 5.0), text(size: 7pt, fill: acc)[深青框：九环节（$C_1$–$C_9$）])
     content((11.3, 5.0), text(size: 7pt, fill: acc2)[赭框：状态分量])
-  }),
+  })),
   caption: [扩展五元组闭环架构（本书提出）。外环为闭环算子 $C = C_9 compose dots compose C_1$ 的九个环节；中心为记忆库 $M_k$ 与证据账本 $L_k$；环境 $E$ 同时承担被作用对象与验证信号源的双重角色。提交语义由 @eq:commit 给出：验证谓词不通过时可修改状态不变，仅账本增长。],
 ) <fig:loop-arch>
 

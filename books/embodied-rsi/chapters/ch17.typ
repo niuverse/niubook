@@ -64,7 +64,7 @@
 本节给出本书的收官建议【本书提出】：以 Physical RSI 的 L0–L5 分级 @zhou2026physicalrsi 为公共刻度，把 2026–2031 年的研究组织为四个里程碑。刻度回顾：L0 固定系统；L1 单任务能力级更新；L2 单任务元级更新（改进程序本身被改进）；L3 跨任务能力级迁移；L4 跨任务元级改进；L5 = L4 加上*逐轮改进收益递增的独立受控证据*。截至 2026 年 10 月，编码域已有 L3 雏形 @zhang2026hyperagents，具身域最高可信证据在 L1–L2 之间 @xiao2025pld @yang2026rise @li2026embodiedevo @wang2026regenharness，L5 无任何系统达到 @zhou2026physicalrsi。@fig:roadmap 给出时间轴与依赖关系，@tab:milestones 给出三栏细则。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     // ---- 上排：L0–L5 级别盒 ----
     let levels = (
@@ -117,7 +117,7 @@
     line((6.9, 1.27), (6.9, 0.65), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
     line((9.9, 1.27), (9.9, 0.65), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
     line((12.9, 1.27), (12.9, 0.65), stroke: (dash: "dotted", paint: softline.darken(30%), thickness: 0.6pt))
-  }),
+  })),
   caption: [Physical RSI L0–L5 五年路线图（本书绘制）。上排为分级刻度（L0/L1 已有实证）；中排为里程碑 M1–M4，依次对应 L2–L5，实线箭头为里程碑之间的依赖。细则见 @tab:milestones。],
 ) <fig:roadmap>
 

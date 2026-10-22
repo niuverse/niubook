@@ -28,7 +28,7 @@ $ cal(A)(c) = argmax_(x : b(x) = c) f(x), quad "QD-score"(cal(A)) = sum_(c in ca
 目标是最大化 QD-score 与覆盖率而非单一最优。@fig:mapelites 给出示意。档案的 RSI 意义由 Cully 等人的经典实验给出最强实证：预建步态多样性档案的六足机器人腿部损伤后，*两分钟之内*即可从档案检索出补偿步态而非从头重学 @cully2015robots——损伤适应从"学习问题"变成"检索问题"，档案是应对未知扰动的冗余储备。工程侧，QDax 把 MAP-Elites 等算法用 JAX 重写并硬件加速，使种群级 QD 实验从数天压缩到数分钟 @lim2022qdax。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     // 行为空间网格 6x4
     let nx = 6
@@ -78,7 +78,7 @@ $ cal(A)(c) = argmax_(x : b(x) = c) f(x), quad "QD-score"(cal(A)) = sum_(c in ca
     // 反馈：档案驱动下一轮亲本
     line((5.4, 5.0), (5.4, 5.35), (bx, 4.85), mark: (end: ">"), stroke: (thickness: 0.8pt, paint: accent, dash: "dashed"))
     content((7.3, 5.45), text(size: 7.5pt, fill: accent)[档案 $cal(A)$ 即亲本分布])
-  }),
+  })),
   caption: [MAP-Elites 档案示意（本书绘制）。左：行为描述子空间 $cal(B)$ 离散为网格，每格保存该行为模式下适应度最高的精英解（@eq:mapelites）；右：采样—变异—评估—按格插入的迭代循环，档案同时充当亲本分布与多样性缓存。],
 ) <fig:mapelites>
 

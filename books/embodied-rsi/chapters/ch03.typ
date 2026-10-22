@@ -36,7 +36,7 @@ MAML 可元学习的前提是内层适应对外层目标可微；不可微时外
 @fig:bilevel 给出其数据流总览。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let bs = (fill: softbg, stroke: 0.9pt + accent, radius: 0.12)
     let bs2 = (fill: white, stroke: 0.9pt + accent2, radius: 0.12)
@@ -66,7 +66,7 @@ MAML 可元学习的前提是内层适应对外层目标可微；不可微时外
     // 外层更新
     line((4.3, 4.1), (3.0, 4.1), mark: (end: ">"), stroke: 0.9pt + accent)
     content((3.65, 5.12), text(size: 7.5pt, fill: accent)[元梯度（外层更新，@eq:metagrad）])
-  }),
+  })),
   caption: [元学习双层优化的数据流。外层维护元参数 $theta$，内层对每个采样任务执行一步可微适应，查询集损失穿过内层过程回传元梯度。],
 ) <fig:bilevel>
 
@@ -89,7 +89,7 @@ MAML 可元学习的前提是内层适应对外层目标可微；不可微时外
 @fig:isomorphism 把科学发现闭环与具身 RSI 闭环并置：二者结构同构，逐环节存在可迁移的数学工具。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let top-style = (fill: softbg, stroke: 0.9pt + accent, radius: 0.12)
     let bot-style = (fill: white, stroke: 0.9pt + accent2, radius: 0.12)
@@ -138,7 +138,7 @@ MAML 可元学习的前提是内层适应对外层目标可微；不可微时外
     // 行标题
     content((3.0, 4.78), anchor: "west", text(size: 8.5pt, fill: accent, weight: "bold")[科学发现闭环])
     content((3.0, -0.5), anchor: "west", text(size: 8.5pt, fill: accent2, weight: "bold")[具身 RSI 闭环])
-  }),
+  })),
   caption: [科学发现闭环（上）与具身 RSI 闭环（下）的同构对应：任务生成对应任务分布设计，实验编排对应 EIG 最大化（3.4 节），失败归因对应科学解释，修改与验证对应假设修正。],
 ) <fig:isomorphism>
 

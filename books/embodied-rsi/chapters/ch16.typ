@@ -16,7 +16,7 @@
 本书按"作用层"把具身 RSI 风险组织为四层（@fig:risk-taxonomy）：*产物层*、*回路层*、*物理层*（具身特有的不可逆后果，编码域分类学所没有）、*生态与治理层*；@tab:riskmap 给出全景索引。两条警告："缓解"列没有一行是充分的，纵深防御是本书的默认立场；"检测"列假设检测器本身在 agent 写域之外，否则整列失效——这正是回路风险的递归性所在（谁审计审计者）。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     // 根节点
     rect((0.0, 2.85), (2.1, 4.05), radius: 0.12, fill: accent, stroke: none, name: "root")
@@ -40,7 +40,7 @@
       line(cname + ".east", lname + ".west", mark: (end: ">"), stroke: 0.7pt + softline.darken(20%))
       i = i + 1
     }
-  }),
+  })),
   caption: [具身 RSI 风险分类树（本书绘制）。2026 年范式转移的核心是回路层与物理层从"可信背景"变为"一等风险载体"。],
 ) <fig:risk-taxonomy>
 

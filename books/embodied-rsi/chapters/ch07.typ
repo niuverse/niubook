@@ -53,7 +53,7 @@ $ "EIG"(e) = EE_(y tilde p(y | e)) [ D_"KL" ( p(psi | y, e) || p(psi) ) ] $ <eq:
 队列优先级即"单位成本 EIG"的贪心排序，贝叶斯优化 @shahriari2016taking 为昂贵真机实验提供序列决策策略。两点衔接（本书推断）：世界模型为 EIG 提供廉价预测分布 $p(y | e)$，同时充当实验执行场地与实验设计的预测先验；而可学性前沿 $p(1-p)$ 恰好是参数辨识信息量最大的区域——课程设计与实验设计在数学上指向同一个采样分布。@fig:pipeline 汇总流水线结构。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let b1 = (radius: 0.12, stroke: 0.8pt + accent, fill: softbg)
     let b2 = (radius: 0.12, stroke: 0.8pt + accent2, fill: bluebg)
@@ -81,7 +81,7 @@ $ "EIG"(e) = EE_(y tilde p(y | e)) [ D_"KL" ( p(psi | y, e) || p(psi) ) ] $ <eq:
     line("execc.south", "execb.north", mark: (end: ">"), stroke: 0.6pt + gray.darken(20%))
     line("execb.south", "execa.north", mark: (end: ">"), stroke: 0.6pt + gray.darken(20%))
     content((7.7, 2.05), text(size: 7.5pt, fill: gray.darken(30%))[证据足够才升级保真度])
-  }),
+  })),
   caption: [任务生成 → 编排 → 分层执行 → 评估回流流水线。执行层按保真度分三级；赭色虚线为回流通道，把评估证据送回生成器与改进算子。],
 ) <fig:pipeline>
 

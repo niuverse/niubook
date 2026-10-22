@@ -36,7 +36,7 @@ $ cal(I) = (hat(Delta), "CI"_(1-alpha), cal(P)) $ <eq:claim>
 本书提出*七步验证协议*作为对改进断言的规范化门禁，设计原则是*漏斗式过滤*：候选修改依次通过七道门，每道门针对一类失效模式，输出写入证据账本（§9.4）。@fig:funnel 给出总体结构；清单中的每一项都须留机器可读的执行记录。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let acc = rgb("#0f5c5c")
     let acc2 = rgb("#8c5a2b")
@@ -80,7 +80,7 @@ $ cal(I) = (hat(Delta), "CI"_(1-alpha), cal(P)) $ <eq:claim>
       line((1.6 + steps.at(i).at(1)/2 + 0.1, y), (1.6 + steps.at(i).at(1)/2 + 0.6, y), mark: (end: ">"), stroke: 0.7pt + acc2)
       content((1.6 + steps.at(i).at(1)/2 + 0.75, y), anchor: "west", text(size: 6.8pt, fill: acc2)[淘汰：#lab])
     }
-  }),
+  })),
   caption: [改进验证漏斗（本书提出）。候选修改依次通过七道门禁，每道门针对 §9.2 的一类失效模式；被淘汰的候选不是丢弃，而是连同失败原因写入证据账本，成为 §9.5 反馈设计的输入。],
 ) <fig:funnel>
 

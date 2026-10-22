@@ -14,7 +14,7 @@
 @fig:arch 给出参考框架的模块架构。系统分三层：#strong[配置层]（单个 YAML 文件声明全部可调面，点分路径如 `policy.kp` 是改进提案的唯一寻址方式）；#strong[编排层]（`loop/rsi_loop.py` 把配置"编译"为实验规约并驱动九环节）；#strong[执行层]（MuJoCo 质点环境与作为"被改进对象"的 PD 控制器）。配置的边界就是权限的边界：不在配置中的行为（如验收谓词）天然处于提案面之外。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let acc = rgb("#0f5c5c")
     let acc2 = rgb("#8c5a2b")
@@ -67,7 +67,7 @@
     // LLM 替换点标注
     rect((8.3, 3.05), (13.0, 4.0), radius: 0.1, stroke: (paint: acc2, thickness: 0.9pt, dash: "dashed"), fill: none)
     content((10.65, 4.35), text(size: 7pt, fill: acc2, weight: "bold")[LLM 代理替换点（接口不变）])
-  }),
+  })),
   caption: [参考框架模块架构。实线为主数据流，虚线为轨迹回传、提案修改与经验检索；赭色虚线框标出 LLM 代理替换点（接口不变）。],
 ) <fig:arch>
 
@@ -140,7 +140,7 @@ keep/rollback 协议由此平凡而安全：`incumbent` 永不被原地修改，
 @fig:seq 刻画一次迭代的九环节数据流。注意：#strong[归因只看训练集，验证只看留出集]——诊断信号与验收信号来自不相交的任务分布，这是防过拟合的设计。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let acc = rgb("#0f5c5c")
     let acc2 = rgb("#8c5a2b")
@@ -166,7 +166,7 @@ keep/rollback 协议由此平凡而安全：`incumbent` 永不被原地修改，
     msg(0, 2, 1.8, [⑦⑧ run(候选配置, heldout) → heldout\_score 对比])
     msg(0, 5, 1.25, [⑨ log\_iteration(keep / rollback / skip)], lc: acc2)
     content((-0.1, 0.5), anchor: "west", text(size: 6.2pt, fill: acc2)[保留则 incumbent ← candidate，否则丢弃候选（深拷贝，天然回滚）])
-  }),
+  })),
   caption: [一次 RSI 迭代的端到端时序。编号对应闭环九环节；赭色消息为提案与记忆链路。],
 ) <fig:seq>
 

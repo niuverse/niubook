@@ -54,7 +54,7 @@ PLD（Probe–Learn–Distill）是「VLA 自我数据收集」路线最完整�
 PLD 是 RoboCat 的成熟化 @bousmalis2023robocat：后者首次演示「自生成数据让下一代权重更强」，但只跑了一轮、任务由人选择；PLD 把任务定位、数据采集与固化全部自动化，且残余专家 + 蒸馏的交替结构天然支持多轮迭代——每轮残余专家只需学习*当前*通用模型的残余误差，问题难度随基座变强而自适应收缩。两个设计细节对本书有直接教益：残余专家是*可抛弃的探针*（通用权重只在蒸馏一步被动修改，回滚成本极低）；混合 rollout 的分布对齐把协变量偏移从「训练隐患」转化为「采集目标」。对照第 10 章的闭环要求，PLD 仍有三处敞口：*任务源*（失败区属于人给定的任务集）、*验收*（依赖人工抽查而非自动回归集）、*元层*（管线自身不学习）。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let acc = rgb("#0f5c5c")
     let acc2 = rgb("#8c5a2b")
@@ -80,7 +80,7 @@ PLD 是 RoboCat 的成熟化 @bousmalis2023robocat：后者首次演示「自生
     content((7.5, 0.38), text(size: 7.8pt, fill: acc2)[下一轮迭代：在更新后的 VLA 上重新探测新的残余失败区])
     rect((0.8, 3.85), (14.2, 4.55), radius: 0.12, fill: sbg, stroke: 0.7pt + softline)
     content((7.5, 4.2), text(size: 8pt, fill: acc)[实测：LIBERO 99% · SimplerEnv +50pp · 真机插拔 1 小时无干预 100%])
-  }),
+  })),
   caption: [PLD（Probe–Learn–Distill）三段式自我改进管线],
 ) <fig:pld>
 

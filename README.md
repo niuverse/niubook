@@ -1,7 +1,7 @@
 # Niubook
 
 AI 生成书稿的合集。每本书以 Typst 源码维护，经人工统稿与引用核验，
-由固定版本的工具链可复现地编译为 PDF。
+由固定版本的工具链可复现地编译为 PDF 与 HTML。
 
 阅读站点：<https://niuverse.github.io/niubook/>
 
@@ -14,28 +14,31 @@ AI 生成书稿的合集。每本书以 Typst 源码维护，经人工统稿与�
 ## 快速开始
 
 ```sh
-just bootstrap     # 下载并校验 Typst 0.15.1 与 mdBook 0.5.4
+just bootstrap     # 下载并校验 Typst 0.15.1
 just doctor        # 检查字体、CeTZ 与 poppler
 just build         # 编译第 1 本书 → dist/books/embodied-rsi/*.pdf
 just check         # 质量门禁：元数据 / 结构 / 构建 / 引用 / 卫生 / 溯源
-just site          # 生成 mdBook 站点 → dist/site
+just site          # 用 Typst bundle 生成站点 → dist/site
 just serve         # http://localhost:8000
 ```
 
-只依赖 Python 3.12 标准库、Typst、mdBook、`poppler-utils` 与 `fonts-noto-cjk`。
-Typst 包已 vendor；两个工具链由 `just bootstrap` 按 sha256 固定版本安装。
+只依赖 Python 3.12 标准库、Typst、`poppler-utils` 与 `fonts-noto-cjk`。
+Typst 包已 vendor；工具链由 `just bootstrap` 按 sha256 固定版本安装。
 
 ## 仓库结构
 
 ```text
 books/<slug>/            一本书：book.toml + Typst 源码 + 溯源与审校台账
 toolchain/
-  versions.toml          Typst / mdBook 版本与 sha256（唯一版本事实源）
+  versions.toml          Typst 版本与 sha256（唯一版本事实源）
   typst/                 系列版式：tokens / components / base
   vendor/                CeTZ 0.3.4 + oxifmt 0.2.1（离线构建）
   python/                BibTeX 校验器
 scripts/                 标准库 Python：bootstrap / build / check / catalog / site
-site/book.toml           mdBook 配置（默认主题）
+site/build.typ           Typst bundle 入口：书目、书页、404
+site/lib.typ             书目与书页共用的页头/页脚
+site/style.css           书目与书页共用的 19px 阅读样式
+site/books/<slug>.typ    每本书的 HTML 正文入口
 catalog/books.json       由 book.toml 与源文件生成的机读书目
 docs/                    书籍契约、写作规范、生产流程、许可调研
 dist/                    构建产物（git 忽略）

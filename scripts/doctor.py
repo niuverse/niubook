@@ -43,14 +43,6 @@ def main() -> int:
                 failures += 1
                 print(f"  ✗ font {font:<19} missing; install fonts-noto-cjk (CJK)")
 
-    mdbook = ROOT / ".tools" / "mdbook"
-    if mdbook.exists():
-        version = subprocess.run([str(mdbook), "--version"], capture_output=True, text=True).stdout.strip()
-        print(f"  ✓ mdbook             {version}")
-    else:
-        failures += 1
-        print("  ✗ mdbook             missing; run `just bootstrap`")
-
     for binary, package in OPTIONAL_BINARIES.items():
         if shutil.which(binary):
             print(f"  ✓ {binary:<19} available")

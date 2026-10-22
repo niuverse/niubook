@@ -23,7 +23,7 @@ $ m_t in G(A_t, cal(E)_t), quad A_(t+1) = cases(A_t ⊕ m_t & "若" C(m_t, cal(D
 七个子空间沿一条*可修改性谱系*排列：越靠近配置端，修改越廉价、越可逆、验证越快；越靠近权重端，越昂贵、越难回滚、风险越集中（@fig:pyramid）。权衡可用四属性刻画：生成成本 $c_"gen"(m)$、验证成本 $c_"ver"(m)$、可逆性与*爆炸半径*（失败时受损功能的最大范围）。【本书推断】默认原则是*把递归自我改进的主循环部署在谱系下段*，上段置于更严、更低频的门禁之后——RegenHarness 只修订 harness 配置并把验证门划出可编辑范围 @wang2026regenharness，DGM/HGM 编辑源码但权重冻结 @zhang2025dgm @wang2025hgm；反之 Gödel Agent 的无门禁 monkey patching 付出约 14% 性能退化的代价 @yin2024godelagent。根本原因在于 harness 层修改以文本/代码为载体，天然可 diff、可版本化、可回归，权重层三者皆缺 @harnessengineering2026。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let names = ("配置 / 运行参数", "Prompt / 上下文", "记忆库", "工具集", "工作流 / 架构", "Harness 源码", "模型权重")
     let n = names.len()
@@ -44,7 +44,7 @@ $ m_t in G(A_t, cal(E)_t), quad A_(t+1) = cases(A_t ⊕ m_t & "若" C(m_t, cal(D
     line((-5.4, n * h - 0.1), (-5.4, 0.1), mark: (end: ">"), stroke: 0.9pt + rgb("#0f5c5c"))
     content((-6.9, 1.1), text(size: 7.5pt, fill: rgb("#0f5c5c"))[修改频率·可逆性])
     content((-6.9, 0.65), text(size: 7.5pt, fill: rgb("#0f5c5c"))[触发粒度 递增])
-  }),
+  })),
   caption: [修改空间层级金字塔。自底向上从运行配置深入到模型权重；修改成本、验证成本与风险递增，修改频率与可逆性递减。工程默认：绝大多数修改集中在下半部（可文本化、可版本化、可回归的层），上半部施加最高规格门禁。],
 ) <fig:pyramid>
 
@@ -68,7 +68,7 @@ $ EE[Delta U(m) | cal(E)_t] > c_"gen"(m) + c_"ver"(m) + lambda dot.op R(m), $ <e
 生成只产出候选；决定系统命运的是提交环节的五机制——版本化、commit gate、回归集门禁、canary 与 rollback（@fig:gate）。
 
 #figure(
-  cetz.canvas(length: 1cm, {
+  diagram(cetz.canvas(length: 1cm, {
     import cetz.draw: *
     let acc = rgb("#0f5c5c")
     let acc2 = rgb("#8c5a2b")
@@ -110,7 +110,7 @@ $ EE[Delta U(m) | cal(E)_t] > c_"gen"(m) + c_"ver"(m) + lambda dot.op R(m), $ <e
     line((7.55, 0.9), (7.15, 0.9), mark: (end: ">"), stroke: (paint: acc2, thickness: 0.8pt, dash: "dashed"))
     line((11.1, 0.51), (11.1, 0.18), (6.1, 0.18), (6.1, 0.51), mark: (end: ">"), stroke: (paint: acc2, thickness: 0.8pt, dash: "dashed"))
     content((8.6, 0.02), frame: "rect", fill: white, stroke: none, padding: 1.4pt, text(size: 6.8pt, fill: acc2)[金丝雀 / 事后异常 → 回滚])
-  }),
+  })),
   caption: [提案→门禁→提交→回滚状态机。实线为正常流向；虚线为异常流向——各级失败回到提案生成或拒绝归档，金丝雀与事后异常触发回滚。拒绝的修改不入档，但其谱系与失败证据必须回流，供下一轮生成使用。],
 ) <fig:gate>
 

@@ -311,3 +311,5 @@ reports/           citations.md, consistency.md, gates.json
 后续变更：2026-10-22 站点从自绘 HTML 迁移到 mdBook 0.5.4（书目、书页、搜索、打印、404 由 mdBook 生成），PDF 仍为唯一下载格式。
 
 后续变更：2026-10-22 工具链升级到 Typst 0.15.1 与 mdBook 0.5.4；106 页不变，文本指纹更新为 `1d405be2…`；PDF 体积约 3.2 MB。
+
+后续变更：2026-10-22 站点改为 Typst 0.15.1 原生 bundle 导出（`site/build.typ` + 单一 `style.css`），mdBook 已移除；书页与首页共用一套页头与版式。

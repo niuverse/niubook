@@ -35,7 +35,7 @@ meta book="embodied-rsi":
 catalog:
     python3 scripts/catalog.py --write
 
-# Build the mdBook catalogue site into dist/site
+# Build the Typst-native catalogue and HTML book into dist/site
 site:
     python3 scripts/site.py
 
