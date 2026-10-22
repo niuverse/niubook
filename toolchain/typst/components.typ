@@ -40,7 +40,7 @@
   #set par(first-line-indent: (amount: 0em, all: true))
   #text(weight: "bold", fill: accent2.darken(10%))[证明.]
   #body
-  #h(1fr) $square.stroked$
+  #h(1fr) $square.filled$
 ]
 
 // ---------- 警示/要点框 ----------

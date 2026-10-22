@@ -39,6 +39,7 @@ REQUIRED_BOOK_FIELDS = (
 )
 ALLOWED_STATUS = {"draft", "review", "stable", "archived"}
 PLACEHOLDER_RE = re.compile(r"\b(?:TODO|FIXME|TBD)\b|XXX|待补|待编写|待填")
+BOX_GLYPH_RE = re.compile("[\u25A0\u25A1\u25A2\u25A3\u25FB\u2610\u2611\u2612\uFFFD]")
 LABEL_RE = re.compile(r"<([A-Za-z][\w-]*):([\w.-]+)>")
 CITE_RE = re.compile(r"@([A-Za-z][A-Za-z0-9:_-]*)")
 RAW_FENCE_RE = re.compile(r"```.*?```", re.DOTALL)
@@ -227,6 +228,7 @@ def gate_bibliography(book_dir: Path, data: dict) -> str:
 # ----------------------------------------------------------------- G4 hygiene
 def gate_hygiene(book_dir: Path, data: dict) -> str:
     placeholders = []
+    boxes = []
     labels: list[str] = []
     canvas = 0
     canvas_ok = 0
@@ -236,12 +238,21 @@ def gate_hygiene(book_dir: Path, data: dict) -> str:
         for match in PLACEHOLDER_RE.finditer(body):
             line = body[: match.start()].count("\n") + 1
             placeholders.append(f"{path.relative_to(book_dir)}:{line} {match.group(0)}")
+        for match in BOX_GLYPH_RE.finditer(body):
+            line = body[: match.start()].count("\n") + 1
+            boxes.append(f"{path.relative_to(book_dir)}:{line} U+{ord(match.group(0)):04X}")
         labels.extend(f"{kind}:{name}" for kind, name in LABEL_RE.findall(body))
         canvas += body.count("cetz.canvas(")
         canvas_ok += body.count("cetz.canvas(length: 1cm")
 
     if placeholders:
         raise GateError("placeholder text found:\n" + "\n".join(f"  {p}" for p in placeholders[:10]))
+
+    if boxes:
+        raise GateError(
+            "ambiguous box glyphs found (use a Typst list or •):\n"
+            + "\n".join(f"  {b}" for b in boxes[:10])
+        )
 
     duplicates = sorted({label for label in labels if labels.count(label) > 1})
     if duplicates:

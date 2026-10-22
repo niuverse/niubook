@@ -10,7 +10,7 @@
   language: "zh-CN",
   year: 2026,
   edition: "2026.10",
-  version: "1.0.0",
+  version: "1.0.1",
   status: "stable",
   audience: "面向机器人与人工智能方向的研究生与研究人员",
   knowledge_cutoff: "2026-10",
