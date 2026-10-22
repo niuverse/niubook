@@ -35,10 +35,6 @@ def mdbook_bin() -> str:
     raise SystemExit("mdbook is not installed; run `just bootstrap`")
 
 
-def cell(value: object) -> str:
-    return " ".join(str(value).split()).replace("|", "\\|")
-
-
 def money(size: int) -> str:
     return f"{size / 1_000_000:.1f} MB"
 
@@ -56,15 +52,12 @@ def render_index(catalog: dict) -> str:
     for book in catalog["books"]:
         stats = book["stats"]
         rows.append(
-            f"| {book['order']:02d} | [{cell(book['title'])}](books/{book['slug']}.md) "
-            f"| {cell(book['subtitle'])} | {cell(book['edition'])} "
-            f"| {stats['pages']} | {stats['references']} |"
+            f"- [{book['title']}](books/{book['slug']}.md) — {book['subtitle']}"
+            f"（{book['edition']} · {stats['pages']} 页 · {stats['references']} 文献）"
         )
 
     return f"""# 书目
 
-| # | 书名 | 副标题 | 版次 | 页数 | 文献 |
-| --- | --- | --- | --- | ---: | ---: |
 {chr(10).join(rows)}
 
 ---
@@ -91,9 +84,7 @@ def render_book(book: dict, pdf_bytes: int) -> str:
 
 [下载 PDF]({slug}.pdf) · [Typst 源码]({REPO_URL}/tree/main/books/{slug}) · [溯源]({REPO_URL}/blob/main/books/{slug}/PROVENANCE.md) · [审校]({REPO_URL}/blob/main/books/{slug}/REVIEW.md)
 
-| 作者 | 版次 | 页数 | 文献 | 许可 |
-| --- | --- | ---: | ---: | --- |
-| {cell(book['author'])} | {cell(book['edition'])} | {stats['pages']} | {stats['references']} | {cell(book['license']['spdx'])} |
+作者：{book['author']} ｜ 版次：{book['edition']} ｜ {stats['pages']} 页 ｜ {stats['references']} 文献 ｜ {book['license']['spdx']}
 
 ## 摘要
 
