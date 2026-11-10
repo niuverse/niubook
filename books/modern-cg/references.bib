@@ -1,0 +1,761 @@
+% ============================================================
+% references.bib —《现代计算机图形学导论》（modern-cg）文献库
+% 所有条目均为真实可查的图形学与三维视觉经典文献及 2020–2026 前沿论文
+% ============================================================
+
+% ---------- 模块一：总论、数学变换、采样与辐射度量（Ch01–Ch03） ----------
+
+@book{marschner2021fundamentals,
+  author    = {Steve Marschner and Peter Shirley},
+  title     = {Fundamentals of Computer Graphics},
+  edition   = {5th},
+  publisher = {CRC Press},
+  year      = {2021},
+  isbn      = {978-0367505035}
+}
+
+@book{pharr2023pbrt,
+  author    = {Matt Pharr and Wenzel Jakob and Greg Humphreys},
+  title     = {Physically Based Rendering: From Theory to Implementation},
+  edition   = {4th},
+  publisher = {MIT Press},
+  year      = {2023},
+  url       = {https://pbr-book.org/4ed/contents}
+}
+
+@book{akenine2018realtime,
+  author    = {Tomas Akenine-M{\"o}ller and Eric Haines and Naty Hoffman and Angelo Pesce and Michał Iwanicki and S{\'e}bastien Hillaire},
+  title     = {Real-Time Rendering},
+  edition   = {4th},
+  publisher = {CRC Press},
+  year      = {2018},
+  isbn      = {978-1138627000}
+}
+
+@article{sutherland1963sketchpad,
+  author    = {Ivan E. Sutherland},
+  title     = {Sketchpad: A Man-Machine Graphical Communication System},
+  journal   = {Proceedings of the AFIPS Spring Joint Computer Conference},
+  pages     = {329--346},
+  year      = {1963},
+  doi       = {10.1145/1461551.1461591}
+}
+
+@article{tewari2022advances,
+  author    = {Ayush Tewari and Justus Thies and Ben Mildenhall and Pratul Srinivasan and Edgar Tretschk and W. Yifan and Christoph Lassner and Vincent Sitzmann and Ricardo Martin-Brualla and Stephen Lombardi and Tomas Simon and Christian Theobalt and Matthias Nie{\ss}ner and Jonathan T. Barron and Gordon Wetzstein and Michael Zollh{\"o}fer and Vladislav Golyanik},
+  title     = {Advances in Neural Rendering},
+  journal   = {Computer Graphics Forum},
+  volume    = {41},
+  number    = {2},
+  pages     = {703--735},
+  year      = {2022},
+  doi       = {10.1111/cgf.14507}
+}
+
+@article{hu2019taichi,
+  author    = {Yuanming Hu and Tzu-Mao Li and Luke Anderson and Jonathan Ragan-Kelley and Fr{\'e}do Durand},
+  title     = {Taichi: A Language for High-Performance Computation on Spatially Sparse Data Structures},
+  journal   = {ACM Transactions on Graphics},
+  volume    = {38},
+  number    = {6},
+  pages     = {201:1--201:16},
+  year      = {2019},
+  doi       = {10.1145/3355089.3356506}
+}
+
+@inproceedings{shoemake1985animating,
+  author    = {Ken Shoemake},
+  title     = {Animating Rotation with Quaternion Curves},
+  booktitle = {Proceedings of the 12th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {245--254},
+  year      = {1985},
+  doi       = {10.1145/325334.325242}
+}
+
+@article{reed2015depth,
+  author    = {Nathan Reed},
+  title     = {Depth Precision Visualized},
+  journal   = {NVIDIA Developer Technical Blog},
+  year      = {2015},
+  url       = {https://developer.nvidia.com/content/depth-precision-visualized}
+}
+
+@article{shannon1949communication,
+  author    = {Claude E. Shannon},
+  title     = {Communication in the Presence of Noise},
+  journal   = {Proceedings of the IRE},
+  volume    = {37},
+  number    = {1},
+  pages     = {10--21},
+  year      = {1949},
+  doi       = {10.1109/JRPROC.1949.232969}
+}
+
+@inproceedings{mitchell1988reconstruction,
+  author    = {Don P. Mitchell and Arun N. Netravali},
+  title     = {Reconstruction Filters in Computer-Graphics},
+  booktitle = {Proceedings of the 15th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {221--228},
+  year      = {1988},
+  doi       = {10.1145/54852.378514}
+}
+
+@inproceedings{cook1986stochastic,
+  author    = {Robert L. Cook},
+  title     = {Stochastic Sampling in Computer Graphics},
+  journal   = {ACM Transactions on Graphics},
+  volume    = {5},
+  number    = {1},
+  pages     = {51--72},
+  year      = {1986},
+  doi       = {10.1145/7529.8927}
+}
+
+@techreport{nicodemus1977geometrical,
+  author      = {Fred E. Nicodemus and Joseph C. Richmond and Jack J. Hsia and Irving W. Ginsberg and Thomas Limperis},
+  title       = {Geometrical Considerations and Nomenclature for Reflectance},
+  institution = {National Bureau of Standards (US)},
+  number      = {NBS Monograph 160},
+  year        = {1977},
+  doi         = {10.6028/NBS.MONO.160}
+}
+
+@inproceedings{reinhard2002photographic,
+  author    = {Erik Reinhard and Michael Stark and Peter Shirley and James Ferwerda},
+  title     = {Photographic Tone Reproduction for Digital Images},
+  booktitle = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {21},
+  number    = {3},
+  pages     = {267--276},
+  year      = {2002},
+  doi       = {10.1145/566654.566575}
+}
+
+% ---------- 模块二：光栅化、着色与实时全局光照（Ch04–Ch06） ----------
+
+@inproceedings{pineda1988parallel,
+  author    = {Juan Pineda},
+  title     = {A Parallel Algorithm for Polygon Rasterization},
+  booktitle = {Proceedings of the 15th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {17--20},
+  year      = {1988},
+  doi       = {10.1145/54852.378457}
+}
+
+@phdthesis{catmull1974subdivision,
+  author    = {Edwin E. Catmull},
+  title     = {A Subdivision Algorithm for Computer Display of Curved Surfaces},
+  school    = {University of Utah},
+  year      = {1974}
+}
+
+@article{blinn1978simulation,
+  author    = {James F. Blinn},
+  title     = {Simulation of Wrinkled Surfaces},
+  journal   = {ACM SIGGRAPH Computer Graphics},
+  volume    = {12},
+  number    = {3},
+  pages     = {286--292},
+  year      = {1978},
+  doi       = {10.1145/965139.507101}
+}
+
+@inproceedings{blinn1977models,
+  author    = {James F. Blinn},
+  title     = {Models of Light Reflection for Computer Synthesized Pictures},
+  booktitle = {Proceedings of the 4th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {192--198},
+  year      = {1977},
+  doi       = {10.1145/563858.563893}
+}
+
+@article{phong1975illumination,
+  author    = {Bui Tuong Phong},
+  title     = {Illumination for Computer Generated Pictures},
+  journal   = {Communications of the ACM},
+  volume    = {18},
+  number    = {6},
+  pages     = {311--317},
+  year      = {1975},
+  doi       = {10.1145/360825.360839}
+}
+
+@inproceedings{williams1983pyramidal,
+  author    = {Lance Williams},
+  title     = {Pyramidal Parametrics},
+  booktitle = {Proceedings of the 10th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {1--11},
+  year      = {1983},
+  doi       = {10.1145/800059.801126}
+}
+
+@inproceedings{heckbert1989fundamentals,
+  author    = {Paul S. Heckbert},
+  title     = {Fundamentals of Texture Mapping and Image Warping},
+  booktitle = {Master's Thesis, University of California, Berkeley},
+  year      = {1989}
+}
+
+@article{karis2021nanite,
+  author    = {Brian Karis and Rune Stubbe and Graham Wihlidal},
+  title     = {Nanite: A Deep Dive},
+  journal   = {ACM SIGGRAPH Courses: Advances in Real-Time Rendering in Games},
+  year      = {2021}
+}
+
+@article{burns2013visibility,
+  author    = {Christopher A. Burns and Warren A. Hunt},
+  title     = {The Visibility Buffer: A Cache-Friendly Approach to Deferred Shading},
+  journal   = {Journal of Computer Graphics Techniques (JCGT)},
+  volume    = {2},
+  number    = {2},
+  pages     = {55--69},
+  year      = {2013}
+}
+
+@article{yang2020taa,
+  author    = {Lei Yang and Shiqiu Liu and Marco Salvi},
+  title     = {A Survey of Temporal Antialiasing Techniques},
+  journal   = {Computer Graphics Forum},
+  volume    = {39},
+  number    = {2},
+  pages     = {607--621},
+  year      = {2020},
+  doi       = {10.1111/cgf.14018}
+}
+
+@inproceedings{vaidyanathan2023ntc,
+  author    = {Karthik Vaidyanathan and Marco Salvi and Bartlomiej Wronski and Tomas Akenine-M{\"o}ller and Pontus Ebelin and Aaron Lefohn},
+  title     = {Random-Access Neural Compression of Material Textures},
+  booktitle = {ACM SIGGRAPH Conference Proceedings},
+  pages     = {1--12},
+  year      = {2023},
+  doi       = {10.1145/3588432.3591525}
+}
+
+@inproceedings{williams1978casting,
+  author    = {Lance Williams},
+  title     = {Casting Curved Shadows on Curved Surfaces},
+  booktitle = {Proceedings of the 5th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {270--274},
+  year      = {1978},
+  doi       = {10.1145/800248.807402}
+}
+
+@inproceedings{fernando2005pcss,
+  author    = {Randima Fernando},
+  title     = {Percentage-Closer Soft Shadows},
+  booktitle = {ACM SIGGRAPH Sketches},
+  pages     = {35},
+  year      = {2005},
+  doi       = {10.1145/1187112.1187153}
+}
+
+@inproceedings{donnelly2006variance,
+  author    = {William Donnelly and Andrew Lauritzen},
+  title     = {Variance Shadow Maps},
+  booktitle = {Proceedings of the Symposium on Interactive 3D Graphics and Games (I3D)},
+  pages     = {161--165},
+  year      = {2006},
+  doi       = {10.1145/1111411.1111440}
+}
+
+@inproceedings{ramamoorthi2001efficient,
+  author    = {Ravi Ramamoorthi and Pat Hanrahan},
+  title     = {An Efficient Representation for Irradiance Environment Maps},
+  booktitle = {Proceedings of the 28th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {497--500},
+  year      = {2001},
+  doi       = {10.1145/383259.383317}
+}
+
+@inproceedings{sloan2002precomputed,
+  author    = {Peter-Pike Sloan and Jan Kautz and John Snyder},
+  title     = {Precomputed Radiance Transfer for Real-Time Rendering in Dynamic, Low-Frequency Lighting Environments},
+  booktitle = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {21},
+  number    = {3},
+  pages     = {527--536},
+  year      = {2002},
+  doi       = {10.1145/566654.566612}
+}
+
+@article{bitterli2020restir,
+  author    = {Benedikt Bitterli and Chris Wyman and Matt Pharr and Peter Shirley and Aaron Lefohn and Wojciech Jarosz},
+  title     = {Spatiotemporal Reservoir Resampling for Real-Time Ray Tracing with Dynamic Direct Lighting},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {39},
+  number    = {4},
+  pages     = {148:1--148:17},
+  year      = {2020},
+  doi       = {10.1145/3386569.3392481}
+}
+
+@article{lin2022generalized,
+  author    = {Daqi Lin and Markus Kettunen and Benedikt Bitterli and Jacopo Pantaleoni and Cem Yuksel and Chris Wyman},
+  title     = {Generalized Resampled Importance Sampling: Foundations of ReSTIR},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {41},
+  number    = {4},
+  pages     = {75:1--75:23},
+  year      = {2022},
+  doi       = {10.1145/3528223.3530158}
+}
+
+% ---------- 模块三：几何表示与数字几何处理（Ch07–Ch08） ----------
+
+@book{farin2002curves,
+  author    = {Gerald Farin},
+  title     = {Curves and Surfaces for CAGD: A Practical Guide},
+  edition   = {5th},
+  publisher = {Morgan Kaufmann},
+  year      = {2002},
+  isbn      = {978-1558607378}
+}
+
+@article{hart1996sphere,
+  author    = {John C. Hart},
+  title     = {Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces},
+  journal   = {The Visual Computer},
+  volume    = {12},
+  number    = {10},
+  pages     = {527--545},
+  year      = {1996},
+  doi       = {10.1007/s003710050084}
+}
+
+@inproceedings{lorensen1987marching,
+  author    = {William E. Lorensen and Harvey E. Cline},
+  title     = {Marching Cubes: A High Resolution 3D Surface Construction Algorithm},
+  booktitle = {Proceedings of the 14th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {163--169},
+  year      = {1987},
+  doi       = {10.1145/37401.37422}
+}
+
+@inproceedings{ju2002dual,
+  author    = {Tao Ju and Frank Losasso and Scott Schaefer and Joe Warren},
+  title     = {Dual Contouring of Hermite Data},
+  booktitle = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {21},
+  number    = {3},
+  pages     = {339--346},
+  year      = {2002},
+  doi       = {10.1145/566654.566586}
+}
+
+@inproceedings{park2019deepsdf,
+  author    = {Jeong Joon Park and Peter Florence and Julian Straub and Richard Newcombe and Steven Lovegrove},
+  title     = {DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {165--174},
+  year      = {2019},
+  doi       = {10.1109/CVPR.2019.00025}
+}
+
+@book{botsch2010polygon,
+  author    = {Mario Botsch and Leif Kobbelt and Mark Pauly and Pierre Alliez and Bruno L{\'e}vy},
+  title     = {Polygon Mesh Processing},
+  publisher = {CRC Press},
+  year      = {2010},
+  isbn      = {978-1568814261}
+}
+
+@article{crane2013digital,
+  author    = {Keenan Crane and Fernando de Goes and Mathieu Desbrun and Peter Schr{\"o}der},
+  title     = {Digital Geometry Processing with Discrete Exterior Calculus},
+  journal   = {ACM SIGGRAPH Courses},
+  pages     = {7:1--7:126},
+  year      = {2013},
+  doi       = {10.1145/2504435.2504442}
+}
+
+@inproceedings{meyer2003discrete,
+  author    = {Mark Meyer and Mathieu Desbrun and Peter Schr{\"o}der and Alan H. Barr},
+  title     = {Discrete Differential-Geometry Operators for Triangulated 2-Manifolds},
+  booktitle = {Visualization and Mathematics III},
+  pages     = {35--57},
+  year      = {2003},
+  doi       = {10.1007/978-3-662-05105-4_2}
+}
+
+@article{catmull1978recursively,
+  author    = {Edwin Catmull and James Clark},
+  title     = {Recursively Generated B-Spline Surfaces on Arbitrary Topological Meshes},
+  journal   = {Computer-Aided Design},
+  volume    = {10},
+  number    = {6},
+  pages     = {350--355},
+  year      = {1978},
+  doi       = {10.1016/0010-4485(78)90110-0}
+}
+
+@mastersthesis{loop1987smooth,
+  author    = {Charles Loop},
+  title     = {Smooth Subdivision Surfaces Based on Triangles},
+  school    = {University of Utah},
+  year      = {1987}
+}
+
+@inproceedings{garland1997surface,
+  author    = {Michael Garland and Paul S. Heckbert},
+  title     = {Surface Simplification Using Quadric Error Metrics},
+  booktitle = {Proceedings of the 24th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {209--216},
+  year      = {1997},
+  doi       = {10.1145/258734.258849}
+}
+
+@article{siddiqui2024meshgpt,
+  author    = {Yawar Siddiqui and Antonio Alliegro and Alexey Artemov and Tatiana Tommasi and Daniele Sirigatti and Vladislav Rosov and Angela Dai and Matthias Nie{\ss}ner},
+  title     = {MeshGPT: Generating Triangle Meshes with Decoder-Only Transformers},
+  journal   = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {19615--19625},
+  year      = {2024},
+  doi       = {10.1109/CVPR52733.2024.01854}
+}
+
+% ---------- 模块四：物理基渲染与蒙特卡洛路径追踪（Ch09–Ch10） ----------
+
+@article{whitted1980improved,
+  author    = {Turner Whitted},
+  title     = {An Improved Illumination Model for Shaded Display},
+  journal   = {Communications of the ACM},
+  volume    = {23},
+  number    = {6},
+  pages     = {343--349},
+  year      = {1980},
+  doi       = {10.1145/358876.358882}
+}
+
+@article{moller1997fast,
+  author    = {Tomas M{\"o}ller and Ben Trumbore},
+  title     = {Fast, Minimum Storage Ray-Triangle Intersection},
+  journal   = {Journal of Graphics Tools},
+  volume    = {2},
+  number    = {1},
+  pages     = {21--28},
+  year      = {1997},
+  doi       = {10.1080/10867651.1997.10487468}
+}
+
+@article{macdonald1990heuristics,
+  author    = {J. David MacDonald and Kellogg S. Booth},
+  title     = {Heuristics for Ray Tracing Using Space Subdivision},
+  journal   = {The Visual Computer},
+  volume    = {6},
+  number    = {3},
+  pages     = {153--166},
+  year      = {1990},
+  doi       = {10.1007/BF01911006}
+}
+
+@inproceedings{kajiya1986rendering,
+  author    = {James T. Kajiya},
+  title     = {The Rendering Equation},
+  booktitle = {Proceedings of the 13th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {143--150},
+  year      = {1986},
+  doi       = {10.1145/15922.15902}
+}
+
+@phdthesis{veach1997robust,
+  author    = {Eric Veach},
+  title     = {Robust Monte Carlo Methods for Light Transport Simulation},
+  school    = {Stanford University},
+  year      = {1997}
+}
+
+@article{cook1982reflectance,
+  author    = {Robert L. Cook and Kenneth E. Torrance},
+  title     = {A Reflectance Model for Computer Graphics},
+  journal   = {ACM Transactions on Graphics},
+  volume    = {1},
+  number    = {1},
+  pages     = {7--24},
+  year      = {1982},
+  doi       = {10.1145/357290.357293}
+}
+
+@inproceedings{walter2007microfacet,
+  author    = {Bruce Walter and Stephen R. Marschner and Hongsong Li and Kenneth E. Torrance},
+  title     = {Microfacet Models for Refraction through Rough Surfaces},
+  booktitle = {Proceedings of the Eurographics Symposium on Rendering (EGSR)},
+  pages     = {195--206},
+  year      = {2007},
+  doi       = {10.2312/EGWR/EGSR07/195-206}
+}
+
+@article{burley2012physically,
+  author    = {Brent Burley},
+  title     = {Physically-Based Shading at Disney},
+  journal   = {ACM SIGGRAPH Courses: Practical Physically-Based Shading in Film and Game Production},
+  pages     = {10:1--10:7},
+  year      = {2012}
+}
+
+@article{heitz2014understanding,
+  author    = {Eric Heitz},
+  title     = {Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs},
+  journal   = {Journal of Computer Graphics Techniques (JCGT)},
+  volume    = {3},
+  number    = {2},
+  pages     = {32--91},
+  year      = {2014}
+}
+
+@article{kulla2017revisiting,
+  author    = {Christopher Kulla and Alejandro Conty},
+  title     = {Revisiting Physically Based Shading at Imageworks},
+  journal   = {ACM SIGGRAPH Courses: Physically Based Shading in Theory and Practice},
+  year      = {2017}
+}
+
+@article{muller2021nrc,
+  author    = {Thomas M{\"u}ller and Fabrice Rousselle and Jan Nov{\'a}k and Alexander Keller},
+  title     = {Real-Time Neural Radiance Caching for Path Tracing},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {40},
+  number    = {4},
+  pages     = {36:1--36:16},
+  year      = {2021},
+  doi       = {10.1145/3450626.3459812}
+}
+
+% ---------- 模块五：计算机动画与物理仿真（Ch11） ----------
+
+@article{kavan2008geometric,
+  author    = {Ladislav Kavan and Steven Collins and Ji{\v{r}}{\'i} {\v{Z}}{\'a}ra and Carol O'Sullivan},
+  title     = {Geometric Skinning with Approximate Dual Quaternion Blending},
+  journal   = {ACM Transactions on Graphics},
+  volume    = {27},
+  number    = {4},
+  pages     = {105:1--105:23},
+  year      = {2008},
+  doi       = {10.1145/1409625.1409627}
+}
+
+@inproceedings{baraff1998large,
+  author    = {David Baraff and Andrew Witkin},
+  title     = {Large Steps in Cloth Simulation},
+  booktitle = {Proceedings of the 25th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)},
+  pages     = {43--54},
+  year      = {1998},
+  doi       = {10.1145/280814.280821}
+}
+
+@article{muller2007position,
+  author    = {Matthias M{\"u}ller and Bruno Heidelberger and Marcus Hennix and John Ratcliff},
+  title     = {Position Based Dynamics},
+  journal   = {Journal of Visual Communication and Image Representation},
+  volume    = {18},
+  number    = {2},
+  pages     = {109--118},
+  year      = {2007},
+  doi       = {10.1016/j.jvcir.2007.01.005}
+}
+
+@inproceedings{macklin2016xpbd,
+  author    = {Miles Macklin and Matthias M{\"u}ller and Nuttapong Chentanez},
+  title     = {XPBD: Position-Based Simulation of Compliant Constrained Dynamics},
+  booktitle = {Proceedings of the 9th International Conference on Motion in Games (MIG)},
+  pages     = {49--54},
+  year      = {2016},
+  doi       = {10.1145/2994258.2994272}
+}
+
+@article{sulsky1995application,
+  author    = {Deborah Sulsky and Shi-Jian Zhou and Howard L. Schreyer},
+  title     = {Application of a Particle-in-Cell Method to Solid Mechanics},
+  journal   = {Computer Physics Communications},
+  volume    = {87},
+  number    = {1-2},
+  pages     = {236--252},
+  year      = {1995},
+  doi       = {10.1016/0010-4655(94)00170-7}
+}
+
+@article{hu2020difftaichi,
+  author    = {Yuanming Hu and Luke Anderson and Tzu-Mao Li and Qi Sun and Nathan Carr and Jonathan Ragan-Kelley and Fr{\'e}do Durand},
+  title     = {DiffTaichi: Differentiable Programming for Physical Simulation},
+  journal   = {International Conference on Learning Representations (ICLR)},
+  year      = {2020},
+  url       = {https://arxiv.org/abs/1910.00935}
+}
+
+@article{lan2023second,
+  author    = {Lei Lan and Minchen Li and Chenfanfu Jiang and Huamin Wang and Yin Yang},
+  title     = {Second-Order Stencil Descent for Interior-Point Hyperelasticity},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {42},
+  number    = {4},
+  pages     = {100:1--100:16},
+  year      = {2023},
+  doi       = {10.1145/3592104}
+}
+
+% ---------- 模块六：可微渲染、NeRF 与 3D Gaussian Splatting（Ch12–Ch13） ----------
+
+@article{li2018differentiable,
+  author    = {Tzu-Mao Li and Miika Aittala and Fr{\'e}do Durand and Jaakko Lehtinen},
+  title     = {Differentiable Monte Carlo Ray Tracing through Edge Sampling},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH Asia)},
+  volume    = {37},
+  number    = {6},
+  pages     = {222:1--222:11},
+  year      = {2018},
+  doi       = {10.1145/3272127.3275109}
+}
+
+@inproceedings{liu2019softras,
+  author    = {Shichen Liu and Tianye Li and Weikai Chen and Hao Li},
+  title     = {Soft Rasterizer: A Differentiable Renderer for Image-Based 3D Reasoning},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages     = {7708--7717},
+  year      = {2019},
+  doi       = {10.1109/ICCV.2019.00780}
+}
+
+@article{laine2020modular,
+  author    = {Samuli Laine and Janne Hellsten and Tero Karras and Yeongho Seol and Jaakko Lehtinen and Timo Aila},
+  title     = {Modular Primitives for High-Performance Differentiable Rendering},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH Asia)},
+  volume    = {39},
+  number    = {6},
+  pages     = {194:1--194:14},
+  year      = {2020},
+  doi       = {10.1145/3414685.3417861}
+}
+
+@article{nimier2019mitsuba,
+  author    = {Merlin Nimier-David and Delio Vicini and Tizian Zeltner and Wenzel Jakob},
+  title     = {Mitsuba 2: A Retargetable Forward and Inverse Renderer},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH Asia)},
+  volume    = {38},
+  number    = {6},
+  pages     = {203:1--203:17},
+  year      = {2019},
+  doi       = {10.1145/3355089.3356498}
+}
+
+@article{max1995optical,
+  author    = {Nelson Max},
+  title     = {Optical Models for Direct Volume Rendering},
+  journal   = {IEEE Transactions on Visualization and Computer Graphics},
+  volume    = {1},
+  number    = {2},
+  pages     = {99--108},
+  year      = {1995},
+  doi       = {10.1109/2945.468400}
+}
+
+@inproceedings{mildenhall2020nerf,
+  author    = {Ben Mildenhall and Pratul P. Srinivasan and Matthew Tancik and Jonathan T. Barron and Ravi Ramamoorthi and Ren Ng},
+  title     = {NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages     = {405--421},
+  year      = {2020},
+  doi       = {10.1007/978-3-030-58452-8_24}
+}
+
+@inproceedings{tancik2020fourier,
+  author    = {Matthew Tancik and Pratul P. Srinivasan and Ben Mildenhall and Sara Fridovich-Keil and Nithin Raghavan and Utkarsh Singhal and Ravi Ramamoorthi and Jonathan T. Barron and Ren Ng},
+  title     = {Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {33},
+  pages     = {7537--7547},
+  year      = {2020}
+}
+
+@inproceedings{barron2021mipnerf,
+  author    = {Jonathan T. Barron and Ben Mildenhall and Matthew Tancik and Peter Hedman and Ricardo Martin-Brualla and Pratul P. Srinivasan},
+  title     = {Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages     = {5855--5864},
+  year      = {2021},
+  doi       = {10.1109/ICCV48922.2021.00580}
+}
+
+@article{muller2022instant,
+  author    = {Thomas M{\"u}ller and Alex Evans and Christoph Schied and Alexander Keller},
+  title     = {Instant Neural Graphics Primitives with a Multiresolution Hash Encoding},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {41},
+  number    = {4},
+  pages     = {102:1--102:15},
+  year      = {2022},
+  doi       = {10.1145/3528223.3530127}
+}
+
+@inproceedings{wang2021neus,
+  author    = {Peng Wang and Lingjie Liu and Yuan Liu and Christian Theobalt and Taku Komura and Wenping Wang},
+  title     = {NeuS: Learning Neural Implicit Surfaces by Volume Rendering for Multi-view Reconstruction},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {34},
+  pages     = {27171--27183},
+  year      = {2021}
+}
+
+@inproceedings{zwicker2001ewa,
+  author    = {Matthias Zwicker and Hanspeter Pfister and Jeroen van Baar and Markus Gross},
+  title     = {EWA Volume Splatting},
+  booktitle = {Proceedings of the IEEE Conference on Visualization},
+  pages     = {29--36},
+  year      = {2001},
+  doi       = {10.1109/VISUAL.2001.964490}
+}
+
+@article{kerbl20233dgs,
+  author    = {Bernhard Kerbl and Georgios Kopanas and Thomas Leimk{\"u}hler and George Drettakis},
+  title     = {3D Gaussian Splatting for Real-Time Radiance Field Rendering},
+  journal   = {ACM Transactions on Graphics (SIGGRAPH)},
+  volume    = {42},
+  number    = {4},
+  pages     = {139:1--139:14},
+  year      = {2023},
+  doi       = {10.1145/3592433}
+}
+
+@inproceedings{yu2024mipsplatting,
+  author    = {Zehao Yu and Anpei Chen and Binbin Huang and Torsten Sattler and Andreas Geiger},
+  title     = {Mip-Splatting: Alias-Free 3D Gaussian Splatting},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {19447--19456},
+  year      = {2024},
+  doi       = {10.1109/CVPR52733.2024.01839}
+}
+
+@inproceedings{huang20242dgs,
+  author    = {Binbin Huang and Zehao Yu and Anpei Chen and Andreas Geiger and Shenghua Gao},
+  title     = {2D Gaussian Splatting for Geometrically Accurate Radiance Fields},
+  booktitle = {ACM SIGGRAPH Conference Proceedings},
+  pages     = {1--11},
+  year      = {2024},
+  doi       = {10.1145/3641519.3657428}
+}
+
+@inproceedings{poole2023dreamfusion,
+  author    = {Ben Poole and Ajay Jain and Jonathan T. Barron and Ben Mildenhall},
+  title     = {DreamFusion: Text-to-3D using 2D Diffusion},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  url       = {https://arxiv.org/abs/2209.14988}
+}
+
+@inproceedings{wu20244dgs,
+  author    = {Guanjun Wu and Taoran Yi and Jiemin Fang and Lingxi Xie and Xiaopeng Zhang and Wei Wei and Wenyu Liu and Qi Tian and Wang Xinggang},
+  title     = {4D Gaussian Splatting for Real-Time Dynamic Scene Rendering},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {20310--20320},
+  year      = {2024},
+  doi       = {10.1109/CVPR52733.2024.01920}
+}
+
+@inproceedings{charatan2024pixelsplat,
+  author    = {David Charatan and Sizhe Lester Li and Andrea Tagliasacchi and Vincent Sitzmann},
+  title     = {pixelSplat: 3D Gaussian Splats from Image Pairs for Scalable Generalizable 3D Reconstruction},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {19457--19467},
+  year      = {2024},
+  doi       = {10.1109/CVPR52733.2024.01840}
+}

@@ -148,6 +148,136 @@
         "generator": "Kimi K3",
         "imported_at": "2026-10-22"
       }
+    },
+    {
+      "slug": "modern-cg",
+      "order": 2,
+      "title": "现代计算机图形学导论",
+      "subtitle": "从经典渲染管线到可微与神经图形学",
+      "title_en": "Introduction to Modern Computer Graphics: From Classical Pipelines to Differentiable and Neural Graphics",
+      "author": "Niubook Graphics Working Group",
+      "series": "Niubook",
+      "language": "zh-CN",
+      "year": 2026,
+      "edition": "2026.11",
+      "version": "1.0.0",
+      "status": "stable",
+      "knowledge_cutoff": "2026-10",
+      "tags": [
+        "计算机图形学",
+        "光栅化",
+        "物理基渲染",
+        "几何处理",
+        "物理仿真",
+        "可微渲染",
+        "神经辐射场",
+        "3D Gaussian Splatting"
+      ],
+      "abstract": "本书以「正向合成管线与逆向可微重建的统一」为主线，系统讲授现代计算机图形学的数学基础与核心算法：从空间齐次变换、信号采样与辐射度量学出发，完整覆盖三角形光栅化与现代可编程 GPU 管线、实时阴影与全局光照、显式/隐式几何与半边网格处理、微表面材质模型与蒙特卡洛路径追踪、骨骼动画与基于位置的动力学（PBD），最终自然延伸至可微渲染、神经辐射场（NeRF）与 3D Gaussian Splatting（3DGS）。全书坚持「几何直觉 → 严格定义 → 数学推导 → 可执行算法」的教学闭环。",
+      "license": {
+        "spdx": "CC-BY-NC-SA-4.0",
+        "name": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
+        "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "stats": {
+        "pages": 115,
+        "chapters": 13,
+        "sections": 65,
+        "references": 78,
+        "unverified": 0
+      },
+      "chapters": [
+        {
+          "number": 1,
+          "title": "现代图形学概览：正向渲染与逆向可微管线",
+          "file": "ch01.typ"
+        },
+        {
+          "number": 2,
+          "title": "空间变换、齐次坐标与相机投影模型",
+          "file": "ch02.typ"
+        },
+        {
+          "number": 3,
+          "title": "信号采样、色彩科学与辐射度量学基础",
+          "file": "ch03.typ"
+        },
+        {
+          "number": 4,
+          "title": "三角形光栅化、透视校正插值与可见性",
+          "file": "ch04.typ"
+        },
+        {
+          "number": 5,
+          "title": "局部光照、纹理映射系统与现代可编程 GPU 管线",
+          "file": "ch05.typ"
+        },
+        {
+          "number": 6,
+          "title": "实时全局光照近似：阴影、环境光与屏幕空间技术",
+          "file": "ch06.typ"
+        },
+        {
+          "number": 7,
+          "title": "显式与隐式几何：参数曲线、曲面与有向距离场",
+          "file": "ch07.typ"
+        },
+        {
+          "number": 8,
+          "title": "多边形网格处理：半边结构、离散微分算子与网格演化",
+          "file": "ch08.typ"
+        },
+        {
+          "number": 9,
+          "title": "光线几何求交、空间加速结构（BVH）与渲染方程",
+          "file": "ch09.typ"
+        },
+        {
+          "number": 10,
+          "title": "微表面材质模型与蒙特卡洛路径追踪",
+          "file": "ch10.typ"
+        },
+        {
+          "number": 11,
+          "title": "计算机动画与物理仿真：从骨骼运动学到基于位置的动力学",
+          "file": "ch11.typ"
+        },
+        {
+          "number": 12,
+          "title": "逆图形学、可微渲染与神经辐射场（NeRF）",
+          "file": "ch12.typ"
+        },
+        {
+          "number": 13,
+          "title": "3D Gaussian Splatting 与现代神经图形学前沿",
+          "file": "ch13.typ"
+        }
+      ],
+      "appendix": [
+        {
+          "number": "A",
+          "title": "全书统一数学符号与坐标系约定",
+          "file": "appendix.typ"
+        },
+        {
+          "number": "B",
+          "title": "核心图形学算法与渲染管线速查表",
+          "file": "appendix.typ"
+        },
+        {
+          "number": "C",
+          "title": "迷你编程实验路线图与验收清单",
+          "file": "appendix.typ"
+        }
+      ],
+      "paths": {
+        "source": "books/modern-cg",
+        "pdf": "books/modern-cg/modern-cg.pdf"
+      },
+      "provenance": {
+        "generator": "Gemini 4 Argon (High)",
+        "imported_at": "2026-11-10"
+      }
     }
   ]
 }
